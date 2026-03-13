@@ -9,16 +9,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        display: ["'Cormorant Garamond'", "serif"],
-        body: ["'DM Sans'", "sans-serif"],
-        mono: ["'DM Mono'", "monospace"],
-      },
-      colors: {
-        cream: "#0D0D0D",
-        stone: "#1A1A1A",
-        ink: "#EDEBE6",
-        muted: "#6B6560",
-        accent: "#C9A96E",
+        sans: ["'Plus Jakarta Sans'", "ui-sans-serif", "system-ui", "sans-serif"],
       },
       letterSpacing: {
         widest: "0.25em",
