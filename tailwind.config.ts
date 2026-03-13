@@ -14,10 +14,10 @@ const config: Config = {
         mono: ["'DM Mono'", "monospace"],
       },
       colors: {
-        cream: "#F9F6F1",
-        stone: "#E8E3DB",
-        ink: "#1A1814",
-        muted: "#8A8478",
+        cream: "#0D0D0D",
+        stone: "#1A1A1A",
+        ink: "#EDEBE6",
+        muted: "#6B6560",
         accent: "#C9A96E",
       },
       letterSpacing: {

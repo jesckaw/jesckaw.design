@@ -1,6 +1,6 @@
 "use client";
-import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const projects = [
   {
@@ -11,7 +11,6 @@ const projects = [
     description: "Complete visual identity system for a luxury wellness brand — logomark, typography, color palette, and brand guidelines.",
     tags: ["Branding", "Identity", "Print"],
     color: "#E8DDD0",
-    // Replace with your actual image paths in /public/projects/
     image: null,
   },
   {
@@ -46,17 +45,11 @@ const projects = [
   },
 ];
 
-function ProjectRow({ project, index }: { project: typeof projects[0]; index: number }) {
+function ProjectRow({ project }: { project: typeof projects[0] }) {
   const [hovered, setHovered] = useState(false);
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <motion.div
-      ref={ref}
-      initial={{ opacity: 0, y: 30 }}
-      animate={inView ? { opacity: 1, y: 0 } : {}}
-      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.16, 1, 0.3, 1] }}
+    <div
       className="relative"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
@@ -112,66 +105,47 @@ function ProjectRow({ project, index }: { project: typeof projects[0]; index: nu
             exit={{ opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className="w-full h-full flex items-center justify-center text-muted font-mono text-xs tracking-widest">
+            <div className="w-full h-full flex items-center justify-center text-stone font-mono text-xs tracking-widest">
               {/* Replace with: <Image src={project.image} fill alt={project.title} className="object-cover" /> */}
               Add project image
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </div>
   );
 }
 
 export default function Work() {
-  const headingRef = useRef(null);
-  const inView = useInView(headingRef, { once: true });
-
   return (
     <section id="work" className="max-w-7xl mx-auto px-8 md:px-12 py-32">
       {/* Heading */}
-      <div ref={headingRef} className="flex items-end justify-between mb-16">
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-          className="font-display text-6xl md:text-8xl font-light text-ink"
-        >
+      <div className="flex items-end justify-between mb-16">
+        <h2 className="font-display text-6xl md:text-8xl font-light text-ink">
           Selected
           <br />
           <span className="italic">Work</span>
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className="hidden md:block text-muted text-sm font-mono tracking-wide max-w-xs text-right"
-        >
+        </h2>
+        <p className="hidden md:block text-muted text-sm font-mono tracking-wide max-w-xs text-right">
           A curated selection of recent projects across brand, digital, and print.
-        </motion.p>
+        </p>
       </div>
 
       {/* Project list */}
       <div>
-        {projects.map((project, i) => (
-          <ProjectRow key={project.id} project={project} index={i} />
+        {projects.map((project) => (
+          <ProjectRow key={project.id} project={project} />
         ))}
       </div>
 
       {/* View all */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.3 }}
-        className="mt-16 flex justify-center"
-      >
+      <div className="mt-16 flex justify-center">
         <a href="#" className="group flex items-center gap-4 text-sm tracking-widest uppercase font-body text-muted hover:text-ink transition-colors duration-300">
           <span className="w-8 h-px bg-muted group-hover:w-14 group-hover:bg-ink transition-all duration-500" />
           All Projects
           <span className="w-8 h-px bg-muted group-hover:w-14 group-hover:bg-ink transition-all duration-500" />
         </a>
-      </motion.div>
+      </div>
     </section>
   );
 }

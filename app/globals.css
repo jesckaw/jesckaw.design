@@ -3,10 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --cream: #F9F6F1;
-  --stone: #E8E3DB;
-  --ink: #1A1814;
-  --muted: #8A8478;
+  --cream: #0D0D0D;
+  --stone: #1A1A1A;
+  --ink: #EDEBE6;
+  --muted: #6B6560;
   --accent: #C9A96E;
 }
 
@@ -35,7 +35,7 @@ body {
   pointer-events: none;
   position: fixed;
   z-index: 9999;
-  mix-blend-mode: multiply;
+  mix-blend-mode: difference;
 }
 
 /* Scrollbar */
@@ -43,7 +43,7 @@ body {
   width: 4px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--cream);
+  background: var(--stone);
 }
 ::-webkit-scrollbar-thumb {
   background: var(--accent);

@@ -1,6 +1,5 @@
 "use client";
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 
 const stagger = {
   hidden: {},
@@ -23,32 +22,20 @@ const line = {
 };
 
 export default function Hero() {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "25%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.6], [1, 0]);
-
   return (
-    <section ref={ref} className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Subtle background shape */}
-      <motion.div
-        className="absolute top-1/4 right-0 w-[45vw] h-[45vw] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%)",
-          y,
-        }}
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Subtle bg glow */}
+      <div
+        className="absolute top-1/4 right-0 w-[45vw] h-[45vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%)" }}
       />
-
-      <motion.div
-        className="absolute bottom-1/4 left-0 w-[30vw] h-[30vw] rounded-full"
-        style={{
-          background: "radial-gradient(circle, rgba(201,169,110,0.05) 0%, transparent 70%)",
-        }}
+      <div
+        className="absolute bottom-1/4 left-0 w-[30vw] h-[30vw] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(201,169,110,0.03) 0%, transparent 70%)" }}
       />
 
       <motion.div
         className="max-w-7xl mx-auto px-8 md:px-12 w-full pt-24"
-        style={{ opacity }}
         variants={stagger}
         initial="hidden"
         animate="show"
@@ -99,7 +86,7 @@ export default function Hero() {
             variants={fadeUp}
             className="text-muted font-body font-light text-base md:text-lg max-w-md leading-relaxed"
           >
-            Brand identity, digital experiences, and visual narratives — 
+            Brand identity, digital experiences, and visual narratives —
             built with intention and refined to feel inevitable.
           </motion.p>
 

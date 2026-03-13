@@ -10,15 +10,9 @@ const navLinks = [
 ];
 
 export default function Nav() {
-  const [scrolled, setScrolled] = useState(false);
   const { scrollY } = useScroll();
-  const navBg = useTransform(scrollY, [0, 80], ["rgba(249,246,241,0)", "rgba(249,246,241,0.95)"]);
-  const navBorder = useTransform(scrollY, [0, 80], ["rgba(232,227,219,0)", "rgba(232,227,219,1)"]);
-
-  useEffect(() => {
-    const unsub = scrollY.on("change", (v) => setScrolled(v > 50));
-    return unsub;
-  }, [scrollY]);
+  const navBg = useTransform(scrollY, [0, 80], ["rgba(13,13,13,0)", "rgba(13,13,13,0.96)"]);
+  const navBorder = useTransform(scrollY, [0, 80], ["rgba(26,26,26,0)", "rgba(26,26,26,1)"]);
 
   return (
     <motion.header
@@ -59,7 +53,7 @@ export default function Nav() {
         {/* CTA */}
         <motion.a
           href="mailto:hello@jesckaw.design"
-          className="hidden md:flex items-center gap-2 text-sm font-body text-ink border border-ink px-5 py-2 hover:bg-ink hover:text-cream transition-all duration-300"
+          className="hidden md:flex items-center gap-2 text-sm font-body text-ink border border-ink/20 px-5 py-2 hover:border-accent hover:text-accent transition-all duration-300"
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
