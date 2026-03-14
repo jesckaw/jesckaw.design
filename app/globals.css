@@ -12,45 +12,14 @@ html,
 body {
   height: 100%;
   overflow: hidden;
+  background: #FDFCF8;
 }
 
-/* Scroll-snap container */
-.scroll-container {
-  height: 100vh;
-  overflow-y: scroll;
-  scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
-}
-
-/* Each snap section */
-.snap-section {
-  height: 100vh;
-  scroll-snap-align: start;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Grain overlay — applied to body */
-body::after {
-  content: '';
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.88' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-  pointer-events: none;
-  opacity: 0.04;
-  z-index: 9999;
-}
-
-/* Selection */
 ::selection {
-  background-color: #ffffff;
-  color: #000000;
+  background: #F472B6;
+  color: white;
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 0;
 }
