@@ -47,18 +47,6 @@ const sparkles = [
 export default function Home() {
   return (
     <div className="relative w-full h-full">
-      {/* ── Logo ── */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.05 }}
-        className="absolute top-7 left-8 z-10"
-      >
-        <span className="text-[13px] font-extrabold tracking-tight leading-[1.1] border-[2.5px] border-[#0A0A0A] px-2.5 py-1 inline-block">
-          jesckaw
-        </span>
-      </motion.div>
-
       {/* ── Center content ── */}
       <div className="flex flex-col items-center justify-center w-full h-full pb-24 px-6">
         {/* Badge */}
