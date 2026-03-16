@@ -1,5 +1,7 @@
 'use client'
 
+import { motion } from 'framer-motion'
+
 const projects = [
   {
     id: 1,
@@ -31,36 +33,30 @@ export default function Work() {
   return (
     <div className="relative w-full h-full flex flex-col overflow-hidden pt-24 sm:pt-28 md:pt-36 px-6 sm:px-12 md:px-20 lg:px-28 pb-6 sm:pb-10">
       {/* Heading */}
-      <h2
+      <motion.h2
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
         className="font-sans font-medium leading-none tracking-tight mb-5 sm:mb-8 shrink-0"
         style={{ fontSize: 'clamp(28px, 4.5vw, 60px)' }}
       >
         Selected{' '}
         <span className="font-serif italic font-normal" style={{ fontSize: '1.05em' }}>works</span>
-      </h2>
+      </motion.h2>
 
       {/* Grid — 1 col on mobile, 2 cols on sm+ */}
       <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 min-h-0">
-        <a
-          href="#"
-          className="rounded-2xl hover:opacity-90 transition-opacity duration-300 min-h-[140px] sm:min-h-0"
-          style={{ backgroundColor: projects[0].color }}
-        />
-        <a
-          href="#"
-          className="rounded-2xl hover:opacity-90 transition-opacity duration-300 min-h-[140px] sm:min-h-0"
-          style={{ backgroundColor: projects[1].color }}
-        />
-        <a
-          href="#"
-          className="rounded-2xl hover:opacity-90 transition-opacity duration-300 min-h-[140px] sm:min-h-0"
-          style={{ backgroundColor: projects[2].color }}
-        />
-        <a
-          href="#"
-          className="rounded-2xl hover:opacity-90 transition-opacity duration-300 min-h-[140px] sm:min-h-0"
-          style={{ backgroundColor: projects[3].color }}
-        />
+        {projects.map((project, i) => (
+          <motion.a
+            key={project.id}
+            href="#"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.18 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="rounded-2xl hover:opacity-90 transition-opacity duration-300 min-h-[140px] sm:min-h-0"
+            style={{ backgroundColor: project.color }}
+          />
+        ))}
       </div>
     </div>
   )
