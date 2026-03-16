@@ -20,7 +20,7 @@ export default function TopNav({
       {/* Name */}
       <button
         onClick={() => onNavigate('home')}
-        className="font-serif italic text-[#0A0A0A] text-[15px] sm:text-[17px] mr-0.5 sm:mr-1 hover:opacity-60 transition-opacity duration-150 shrink-0"
+        className="font-serif italic text-[#0A0A0A] text-[20px] sm:text-[24px] mr-0.5 sm:mr-1 hover:opacity-60 transition-opacity duration-150 shrink-0"
       >
         jessica
       </button>
