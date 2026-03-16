@@ -1,54 +1,25 @@
 'use client'
 
 import { motion } from 'framer-motion'
-
-function Flower({
-  size = 480,
-  petalColor = '#8ECDE8',
-  starColor = '#8B35B0',
-}: {
-  size?: number
-  petalColor?: string
-  starColor?: string
-}) {
-  const r = size / 2
-  const pr = size * 0.25   // petal radius
-  const d = size * 0.165   // petal offset from center
-  const arm = size * 0.16  // star arm length
-  const w = size * 0.047   // star waist half-width
-
-  return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} fill="none">
-      <circle cx={r} cy={r - d} r={pr} fill={petalColor} />
-      <circle cx={r} cy={r + d} r={pr} fill={petalColor} />
-      <circle cx={r - d} cy={r} r={pr} fill={petalColor} />
-      <circle cx={r + d} cy={r} r={pr} fill={petalColor} />
-      {/* 4-pointed sparkle star */}
-      <path
-        d={`M ${r},${r - arm} L ${r + w},${r - w} L ${r + arm},${r} L ${r + w},${r + w} L ${r},${r + arm} L ${r - w},${r + w} L ${r - arm},${r} L ${r - w},${r - w} Z`}
-        fill={starColor}
-      />
-    </svg>
-  )
-}
+import Image from 'next/image'
 
 export default function Home() {
   return (
     <div className="relative w-full h-full overflow-hidden">
       {/* Blue flower — bottom left */}
       <div
-        className="absolute pointer-events-none select-none"
+        className="absolute z-0 pointer-events-none select-none"
         style={{ bottom: -160, left: -160 }}
       >
-        <Flower size={500} petalColor="#9BD2E5" starColor="#8B35B0" />
+        <Image src="/blue-flw.svg" alt="" width={500} height={500} />
       </div>
 
       {/* Pink flower — right side */}
       <div
-        className="absolute pointer-events-none select-none"
+        className="absolute z-0 pointer-events-none select-none"
         style={{ right: -180, top: '28%' }}
       >
-        <Flower size={520} petalColor="#E86FA4" starColor="#7A1040" />
+        <Image src="/pink-flw.svg" alt="" width={520} height={520} />
       </div>
 
       {/* Center content */}
