@@ -27,16 +27,18 @@ export default function TopNav({
 
       {/* Icon buttons */}
       {iconItems.map((item) => (
-        <button
-          key={item.id}
-          onClick={() => onNavigate(item.id)}
-          aria-label={item.id}
-          className={`w-10 h-10 rounded-[10px] flex items-center justify-center text-xl transition-colors duration-150 ${
-            active === item.id ? 'bg-[#E8E8E8]' : 'bg-[#F3F3F1] hover:bg-[#EBEBEA]'
-          }`}
-        >
-          {item.icon}
-        </button>
+        <div key={item.id} className="flex flex-col items-center gap-1">
+          <button
+            onClick={() => onNavigate(item.id)}
+            aria-label={item.id}
+            className={`w-10 h-10 rounded-[10px] flex items-center justify-center text-xl transition-colors duration-150 ${
+              active === item.id ? 'bg-[#E8E8E8]' : 'bg-[#F3F3F1] hover:bg-[#EBEBEA]'
+            }`}
+          >
+            {item.icon}
+          </button>
+          <div className={`w-1 h-1 rounded-full bg-[#0A0A0A] transition-opacity duration-200 ${active === item.id ? 'opacity-100' : 'opacity-0'}`} />
+        </div>
       ))}
 
       {/* Chat CTA */}

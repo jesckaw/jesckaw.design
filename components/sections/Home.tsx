@@ -63,15 +63,7 @@ export default function Home() {
         >
           <span className="font-serif italic text-[#0A0A0A]">Designing with</span>
           <br />
-          <span className="font-black text-[#0A0A0A]">cur</span>
-          <span
-            className="inline-block w-[2px] rounded-full bg-[#0A0A0A] mx-[1px] align-middle"
-            style={{
-              height: 'clamp(36px, 5.5vw, 74px)',
-              animation: 'blink 1.1s ease-in-out infinite',
-            }}
-          />
-          <span className="font-black text-[#0A0A0A]">osity</span>
+          <span className="font-black text-[#0A0A0A]">curiosity</span>
           <span className="font-serif italic text-[#0A0A0A]">{' & care.'}</span>
         </motion.h1>
 
