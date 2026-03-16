@@ -29,7 +29,7 @@ export default function TopNav({
       {iconItems.map((item) => (
         <div key={item.id} className="relative flex flex-col items-center gap-1 shrink-0 group">
           {/* Tooltip */}
-          <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#0A0A0A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
+          <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-[#0A0A0A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
             {item.label}
           </span>
           <button
