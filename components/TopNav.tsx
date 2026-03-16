@@ -2,10 +2,10 @@
 
 import type { Section } from '@/app/page'
 
-const iconItems: { id: Section; icon: string }[] = [
-  { id: 'about',   icon: '🌸' },
-  { id: 'work',    icon: '📁' },
-  { id: 'contact', icon: '✉️' },
+const iconItems: { id: Section; icon: string; label: string }[] = [
+  { id: 'about',   icon: '🌸', label: 'About' },
+  { id: 'work',    icon: '📁', label: 'Work' },
+  { id: 'contact', icon: '✉️', label: 'Contact' },
 ]
 
 export default function TopNav({
@@ -27,10 +27,14 @@ export default function TopNav({
 
       {/* Icon buttons */}
       {iconItems.map((item) => (
-        <div key={item.id} className="flex flex-col items-center gap-1 shrink-0">
+        <div key={item.id} className="relative flex flex-col items-center gap-1 shrink-0 group">
+          {/* Tooltip */}
+          <span className="absolute -top-8 left-1/2 -translate-x-1/2 bg-[#0A0A0A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
+            {item.label}
+          </span>
           <button
             onClick={() => onNavigate(item.id)}
-            aria-label={item.id}
+            aria-label={item.label}
             className={`w-9 h-9 sm:w-10 sm:h-10 rounded-[10px] flex items-center justify-center text-lg sm:text-xl transition-colors duration-150 ${
               active === item.id ? 'bg-[#E8E8E8]' : 'bg-[#F3F3F1] hover:bg-[#EBEBEA]'
             }`}
