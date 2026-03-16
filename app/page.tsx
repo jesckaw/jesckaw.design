@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import Dock from '@/components/Dock'
+import TopNav from '@/components/TopNav'
 import Home from '@/components/sections/Home'
 import About from '@/components/sections/About'
 import Work from '@/components/sections/Work'
@@ -37,7 +37,7 @@ export default function Page() {
           <ActiveSection />
         </motion.div>
       </AnimatePresence>
-      <Dock active={active} onNavigate={setActive} />
+      <TopNav active={active} onNavigate={setActive} />
     </div>
   )
 }
