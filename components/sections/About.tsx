@@ -2,112 +2,125 @@
 
 import { motion } from 'framer-motion'
 
-const skills = [
-  'Figma', 'Prototyping', 'User Research', 'Illustration',
-  'Brand Design', 'Motion Design', 'Design Systems', 'Typography',
+const experience = [
+  { company: 'Aura Finance', role: 'Product designer', year: '2024– 2026' },
+  { company: 'Aibao', role: 'Brand designer', year: '2025' },
+  { company: 'Hooli', role: 'Product designer', year: '2023' },
+  { company: 'Noteable', role: 'Product designer', year: '2022' },
 ]
 
-const facts = [
-  { label: 'Based in', value: 'Los Angeles, CA' },
-  { label: 'Currently', value: 'Open to opportunities' },
-  { label: 'Education', value: 'BFA in Graphic Design' },
-  { label: 'Loves', value: 'Sanrio, matcha & pixels' },
-]
+function Sparkle({ size = 18, className = '' }: { size?: number; className?: string }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M12 0 C12 0 13.2 9.2 14.8 10.8 C16.4 12.4 24 12 24 12 C24 12 16.4 11.6 14.8 13.2 C13.2 14.8 12 24 12 24 C12 24 10.8 14.8 9.2 13.2 C7.6 11.6 0 12 0 12 C0 12 7.6 12.4 9.2 10.8 C10.8 9.2 12 0 12 0 Z" />
+    </svg>
+  )
+}
 
 export default function About() {
-  return (
-    <div className="w-full h-full overflow-y-auto pb-32 pt-16 px-8 md:px-16 lg:px-24">
-      {/* Section label */}
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-3"
-      >
-        About
-      </motion.p>
+  const fadeUp = (delay: number) => ({
+    initial: { opacity: 0, y: 18 },
+    animate: { opacity: 1, y: 0 },
+    transition: { delay, duration: 0.55, ease: [0.22, 1, 0.36, 1] as const },
+  })
 
+  return (
+    <div className="w-full h-full overflow-y-auto pb-32 pt-24 sm:pt-28 md:pt-36 px-6 sm:px-10 md:px-16">
       {/* Heading */}
       <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-        className="font-serif italic leading-[1] tracking-tight mb-10"
-        style={{ fontSize: 'clamp(40px, 6vw, 80px)' }}
+        {...fadeUp(0.08)}
+        className="font-sans font-bold leading-tight mb-8"
+        style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}
       >
-        Nice to{' '}
-        <span className="not-italic font-black font-sans">meet you.</span>
+        Hi again, I'm{' '}
+        <span className="font-serif italic font-normal">Jessica</span>
       </motion.h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl">
-        {/* Bio */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.18 }}
-          className="space-y-5"
-        >
-          <p className="text-[17px] leading-[1.7] text-[#0A0A0A]/75">
-            I'm <strong className="font-bold text-[#0A0A0A]">Jessica</strong>, a UX and product
-            designer who believes the best interfaces feel invisible — like they were made{' '}
-            <span className="font-serif italic">just for you</span>.
+      {/* Two cards */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-2xl">
+        {/* Left card — bio + blob */}
+        <motion.div {...fadeUp(0.18)} className="bg-white rounded-3xl p-5 border border-black/[0.07] shadow-sm flex flex-col justify-between min-h-[220px]">
+          <p className="text-[14px] leading-[1.5] text-[#0A0A0A]/70 font-medium">
+            A product designer in the<br />San Francisco Bay Area
           </p>
-          <p className="text-[16px] leading-[1.7] text-[#0A0A0A]/55">
-            My design process starts with curiosity and ends with craft. I love working at the intersection
-            of playful aesthetics and purposeful function — whether that's a healthcare app, a travel
-            companion, or a kawaii icon set.
-          </p>
-          <p className="text-[16px] leading-[1.7] text-[#0A0A0A]/55">
-            When I'm not in Figma, I'm probably customising my phone screen, collecting stamps, or
-            watching Studio Ghibli for the hundredth time.
-          </p>
-
-          {/* Skills */}
-          <div className="pt-4">
-            <p className="text-[11px] font-bold tracking-[0.18em] uppercase text-[#0A0A0A]/30 mb-3">
-              Skills & tools
-            </p>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((s, i) => (
-                <motion.span
-                  key={s}
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 + i * 0.05 }}
-                  className="bg-white border border-black/[0.09] rounded-full px-3.5 py-1 text-[12.5px] font-semibold text-[#0A0A0A]/70 shadow-sm"
-                >
-                  {s}
-                </motion.span>
-              ))}
+          {/* Blob shape */}
+          <div className="flex justify-center items-center mt-4">
+            <div className="relative w-36 h-36">
+              {/* 4-lobed cloud using overlapping circles */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
+              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
+              <div className="absolute inset-6 rounded-full bg-[#A8CFDF]" />
+              {/* Sparkle star */}
+              <div className="absolute bottom-3 right-3 z-10">
+                <Sparkle size={36} className="text-[#B44EC4]" />
+              </div>
             </div>
           </div>
         </motion.div>
 
-        {/* Fact card */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.25 }}
-          className="space-y-4"
-        >
-          {/* Avatar placeholder */}
-          <div className="w-full aspect-[4/3] bg-gradient-to-br from-[#F9E8F3] via-[#EDE8FB] to-[#E8EDFB] rounded-3xl flex items-center justify-center mb-6 border border-black/[0.04]">
-            <div className="text-center space-y-2">
-              <div className="text-6xl">🌸</div>
-              <p className="text-[12px] text-[#0A0A0A]/30 font-medium">Photo coming soon</p>
+        {/* Right card — sparkles + current stack badge */}
+        <motion.div {...fadeUp(0.25)} className="bg-white rounded-3xl border border-black/[0.07] shadow-sm flex items-center justify-center min-h-[220px] overflow-hidden">
+          <div className="relative w-full flex items-center justify-center" style={{ height: 220 }}>
+            {/* Sparkle grid */}
+            <div className="grid grid-cols-4 gap-4 absolute inset-4">
+              {[14,20,16,14, 22,14,14,20, 14,18,16,14].map((size, i) => (
+                <div key={i} className="flex items-center justify-center">
+                  <Sparkle size={size} className="text-[#B44EC4]" />
+                </div>
+              ))}
             </div>
-          </div>
-
-          {/* Facts */}
-          <div className="bg-white border border-black/[0.07] rounded-2xl p-5 shadow-sm space-y-3">
-            {facts.map(({ label, value }) => (
-              <div key={label} className="flex items-center justify-between">
-                <span className="text-[12px] font-bold text-[#0A0A0A]/30 uppercase tracking-wide">{label}</span>
-                <span className="text-[13px] font-semibold text-[#0A0A0A]/75">{value}</span>
-              </div>
-            ))}
+            {/* Current stack badge */}
+            <div className="relative z-10 bg-[#D6EBF5] text-[#0A0A0A]/70 text-[12px] font-medium px-4 py-1.5 rounded-full border border-[#A8CFDF]/50">
+              current stack
+            </div>
           </div>
         </motion.div>
       </div>
+
+      {/* Experience */}
+      <motion.div {...fadeUp(0.25)} className="max-w-2xl mb-14">
+        <h3 className="font-sans font-bold text-[20px] text-[#0A0A0A] mb-0.5">My experience</h3>
+        <p className="font-serif italic text-[15px] text-[#0A0A0A]/55 mb-5">
+          in Product, Graphic, and more
+        </p>
+        <div className="divide-y divide-black/[0.08]">
+          {experience.map(({ company, role, year }, i) => (
+            <motion.div
+              key={company}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 + i * 0.06, duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="flex items-baseline justify-between py-3.5"
+            >
+              <span className="text-[14px] text-[#0A0A0A]/85">
+                <strong className="font-bold">{company}</strong>
+                <span className="font-normal text-[#0A0A0A]/55">, {role}</span>
+              </span>
+              <span className="text-[13px] font-semibold text-[#0A0A0A]/60 ml-4 shrink-0">{year}</span>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Outside of design */}
+      <motion.div {...fadeUp(0.45)} className="max-w-2xl">
+        <h3 className="font-sans font-bold text-[20px] text-[#0A0A0A] mb-5">
+          Outside of <span className="font-serif italic font-normal">design</span>
+        </h3>
+        <div className="grid grid-cols-3 gap-4">
+          {[0, 1, 2].map((i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+              className="aspect-square bg-[#D9D9D9]/60 rounded-2xl"
+            />
+          ))}
+        </div>
+      </motion.div>
     </div>
   )
 }
