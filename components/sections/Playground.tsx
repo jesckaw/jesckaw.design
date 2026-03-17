@@ -57,7 +57,7 @@ const experiments = [
 
 export default function Playground() {
   return (
-    <div className="w-full h-full overflow-y-auto pb-32 pt-16 px-8 md:px-16 lg:px-24">
+    <div className="w-full h-full overflow-y-auto pb-32 pt-16 page-x">
       {/* Section label */}
       <motion.p
         initial={{ opacity: 0, y: 10 }}

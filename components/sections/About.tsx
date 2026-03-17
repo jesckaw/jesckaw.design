@@ -25,7 +25,7 @@ export default function About() {
   })
 
   return (
-    <div className="w-full h-full overflow-y-auto pb-32 pt-24 sm:pt-28 md:pt-36 px-6 sm:px-10 md:px-16">
+    <div className="w-full h-full overflow-y-auto pb-32 pt-24 sm:pt-28 md:pt-36 page-x">
       {/* Heading */}
       <motion.h2
         {...fadeUp(0.08)}
@@ -37,7 +37,7 @@ export default function About() {
       </motion.h2>
 
       {/* Two cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12 max-w-2xl">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
         {/* Left card — bio + blob */}
         <motion.div {...fadeUp(0.18)} className="bg-white rounded-3xl p-5 border border-black/[0.07] shadow-sm flex flex-col justify-between min-h-[220px]">
           <p className="text-[14px] leading-[1.5] text-[#0A0A0A]/70 font-medium">
@@ -80,9 +80,9 @@ export default function About() {
       </div>
 
       {/* Experience */}
-      <motion.div {...fadeUp(0.25)} className="max-w-2xl mb-14">
-        <h3 className="font-sans font-bold text-[20px] text-[#0A0A0A] mb-0.5">My experience</h3>
-        <p className="font-serif italic text-[15px] text-[#0A0A0A]/55 mb-5">
+      <motion.div {...fadeUp(0.25)} className="mb-14">
+        <h3 className="font-sans font-bold text-[#0A0A0A] mb-1" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>My experience</h3>
+        <p className="font-serif italic text-[#0A0A0A]/55 mb-5" style={{ fontSize: 'clamp(16px, 1.5vw, 20px)' }}>
           in Product, Graphic, and more
         </p>
         <div className="divide-y divide-black/[0.08]">
@@ -105,8 +105,8 @@ export default function About() {
       </motion.div>
 
       {/* Outside of design */}
-      <motion.div {...fadeUp(0.45)} className="max-w-2xl">
-        <h3 className="font-sans font-bold text-[20px] text-[#0A0A0A] mb-5">
+      <motion.div {...fadeUp(0.45)}>
+        <h3 className="font-sans font-bold text-[#0A0A0A] mb-5" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>
           Outside of <span className="font-serif italic font-normal">design</span>
         </h3>
         <div className="grid grid-cols-3 gap-4">

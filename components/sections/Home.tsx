@@ -29,7 +29,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 22 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.12, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center leading-[0.95] tracking-tight select-none"
+          className="text-center leading-[0.95] tracking-tight"
           style={{ fontSize: 'clamp(48px, 7.5vw, 100px)' }}
         >
           <span className="font-serif italic text-[#0A0A0A]">Designing with</span>

@@ -28,3 +28,29 @@ body {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }
+
+@layer utilities {
+  /* Page-level horizontal padding — update here to change all pages at once */
+  .page-x {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  @media (min-width: 640px) {
+    .page-x {
+      padding-left: 3.5rem;
+      padding-right: 3.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+    .page-x {
+      padding-left: 6rem;
+      padding-right: 6rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .page-x {
+      padding-left: 9rem;
+      padding-right: 9rem;
+    }
+  }
+}

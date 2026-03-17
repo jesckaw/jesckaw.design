@@ -31,7 +31,7 @@ const projects = [
 
 export default function Work() {
   return (
-    <div className="relative w-full h-full flex flex-col overflow-hidden pt-24 sm:pt-28 md:pt-36 px-6 sm:px-12 md:px-20 lg:px-28 pb-6 sm:pb-10">
+    <div className="relative w-full h-full flex flex-col overflow-hidden pt-24 sm:pt-28 md:pt-36 page-x pb-6 sm:pb-10">
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
