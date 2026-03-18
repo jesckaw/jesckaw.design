@@ -13,6 +13,7 @@ export default function Nav() {
   const { scrollY } = useScroll();
   const navBg = useTransform(scrollY, [0, 80], ["rgba(13,13,13,0)", "rgba(13,13,13,0.96)"]);
   const navBorder = useTransform(scrollY, [0, 80], ["rgba(26,26,26,0)", "rgba(26,26,26,1)"]);
+  const [hovered, setHovered] = useState(false);
 
   return (
     <motion.header
@@ -27,8 +28,10 @@ export default function Nav() {
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
         >
-          Jesckaw<span className="text-accent">.</span>
+          {hovered ? <>Hello <span className="text-accent">:)</span></> : <>Jesckaw<span className="text-accent">.</span></>}
         </motion.a>
 
         {/* Links */}
