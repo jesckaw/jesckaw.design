@@ -21,6 +21,7 @@ const sectionMap = {
 
 export default function Page() {
   const [active, setActive] = useState<Section>('home')
+  const [modalOpen, setModalOpen] = useState(false)
   const ActiveSection = sectionMap[active]
 
   return (
@@ -34,10 +35,21 @@ export default function Page() {
           transition={{ duration: 0.25 }}
           className="w-full h-full"
         >
-          <ActiveSection />
+          <ActiveSection onModalChange={active === 'work' ? setModalOpen : undefined} />
         </motion.div>
       </AnimatePresence>
-      <TopNav active={active} onNavigate={setActive} />
+      <AnimatePresence>
+        {!modalOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+          >
+            <TopNav active={active} onNavigate={setActive} />
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
