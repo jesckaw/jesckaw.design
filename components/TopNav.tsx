@@ -24,7 +24,7 @@ export default function TopNav({
       >
         <span className="grid">
           <span className="[grid-area:1/1] transition-all duration-300 ease-in-out group-hover/name:opacity-0 group-hover/name:-translate-y-2">jessica</span>
-          <span className="[grid-area:1/1] transition-all duration-300 ease-in-out opacity-0 translate-y-2 group-hover/name:opacity-100 group-hover/name:translate-y-0">hello :)</span>
+          <span className="[grid-area:1/1] transition-all duration-300 ease-in-out opacity-0 translate-y-2 group-hover/name:opacity-100 group-hover/name:translate-y-0">hello :-)</span>
         </span>
       </button>
 
