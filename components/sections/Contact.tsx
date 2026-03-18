@@ -3,31 +3,21 @@
 import { motion } from 'framer-motion'
 
 const links = [
-  { label: 'Email',     value: 'hello@jesckaw.design',          href: 'mailto:hello@jesckaw.design', emoji: '✉️' },
-  { label: 'LinkedIn',  value: 'linkedin.com/in/jesckaw',        href: '#',                           emoji: '💼' },
-  { label: 'Dribbble',  value: 'dribbble.com/jesckaw',           href: '#',                           emoji: '🏀' },
-  { label: 'Instagram', value: '@jesckaw',                        href: '#',                           emoji: '🌸' },
+  { label: 'Email',    value: 'jessicamei.design@gmail.com',          href: 'mailto:jessicamei.design@gmail.com',    emoji: '✉️' },
+  { label: 'LinkedIn', value: 'linkedin.com/in/jessica-mei',          href: 'https://www.linkedin.com/in/jessica-mei/', emoji: '💼' },
 ]
 
 export default function Contact() {
   return (
-    <div className="w-full h-full flex flex-col items-center justify-center pb-28 px-8 text-center">
-      {/* Section label */}
-      <motion.p
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        className="text-[12px] font-bold tracking-[0.2em] uppercase text-[#0A0A0A]/35 mb-4"
-      >
-        Contact
-      </motion.p>
-
+    <div className="w-full h-full overflow-y-auto pt-24 sm:pt-28 md:pt-36 page-x">
+      <div className="flex flex-col items-center text-center pb-28">
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 22 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.08, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="font-serif italic leading-[0.92] tracking-tight mb-5"
-        style={{ fontSize: 'clamp(48px, 7.5vw, 100px)' }}
+        style={{ fontSize: 'clamp(36px, 5.5vw, 72px)' }}
       >
         {"Let's make"}
         <br />
@@ -81,6 +71,7 @@ export default function Contact() {
       >
         Designed & built by Jessica ✦ 2024
       </motion.p>
+      </div>
     </div>
   )
 }
