@@ -20,9 +20,10 @@ export default function TopNav({
       {/* Name */}
       <button
         onClick={() => onNavigate('home')}
-        className="font-serif italic text-[#0A0A0A] text-[24px] sm:text-[28px] mr-0.5 sm:mr-1 hover:opacity-60 transition-opacity duration-150 shrink-0"
+        className="font-serif italic text-[#0A0A0A] text-[24px] sm:text-[28px] mr-0.5 sm:mr-1 hover:opacity-60 transition-opacity duration-150 shrink-0 group/name"
       >
-        jessica
+        <span className="group-hover/name:hidden">jessica</span>
+        <span className="hidden group-hover/name:inline">hello :)</span>
       </button>
 
       {/* Icon buttons */}
