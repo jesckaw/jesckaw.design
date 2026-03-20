@@ -190,20 +190,9 @@ export default function About() {
           <p className="text-[14px] leading-[1.5] text-[#0A0A0A]/70 font-medium">
             A product designer in the<br />San Francisco Bay Area
           </p>
-          {/* Blob shape */}
-          <div className="flex justify-center items-center mt-4">
-            <div className="relative w-36 h-36">
-              {/* 4-lobed cloud using overlapping circles */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute inset-6 rounded-full bg-[#A8CFDF]" />
-              {/* Sparkle star */}
-              <div className="absolute bottom-3 right-3 z-10">
-                <Sparkle size={36} className="text-[#B44EC4]" />
-              </div>
-            </div>
+          {/* Blue flower image */}
+          <div className="flex justify-end items-end mt-4 -mb-5 -mr-5">
+            <img src="/blue-flw.svg" alt="" className="w-48 h-48 object-contain" />
           </div>
         </motion.div>
 
