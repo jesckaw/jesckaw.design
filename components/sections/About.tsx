@@ -186,14 +186,17 @@ export default function About() {
       {/* Two cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
         {/* Left card — bio + blob */}
-        <motion.div {...fadeUp(0.18)} className="bg-white rounded-3xl p-5 border border-black/[0.07] shadow-sm flex flex-col justify-between min-h-[220px]">
-          <p className="text-[14px] leading-[1.5] text-[#0A0A0A]/70 font-medium">
+        <motion.div {...fadeUp(0.18)} className="relative bg-white rounded-3xl p-6 border border-black/[0.07] shadow-sm min-h-[300px] overflow-hidden">
+          <p className="relative z-10 text-[18px] leading-[1.4] text-[#0A0A0A] font-semibold">
             A product designer in the<br />San Francisco Bay Area
           </p>
-          {/* Blue flower image */}
-          <div className="flex justify-end items-end mt-4 -mb-5 -mr-5">
-            <img src="/blue-flw.svg" alt="" className="w-48 h-48 object-contain" />
-          </div>
+          {/* Blue flower image — large, bottom-right, clipped */}
+          <img
+            src="/blue-flw.svg"
+            alt=""
+            className="absolute bottom-0 right-0 translate-x-[18%] translate-y-[18%]"
+            style={{ width: '85%', height: 'auto' }}
+          />
         </motion.div>
 
         {/* Right card — folder stack */}
