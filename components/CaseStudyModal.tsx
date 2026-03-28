@@ -90,26 +90,22 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                 {/* Content */}
                 <div className="px-6 py-8 space-y-8">
                   {/* Badge + title + tagline */}
-                  <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3">
-                    <div className="pt-1">
-                      <span className="inline-block border border-black/20 text-black/40 font-sans text-xs tracking-widest uppercase rounded-full px-3 py-1">
-                        Project
-                      </span>
-                    </div>
-                    <div className="space-y-2">
-                      <h2
-                        className="text-black font-sans font-medium leading-tight tracking-tight"
-                        style={{ fontSize: 'clamp(22px, 3.5vw, 44px)' }}
-                      >
-                        {project.title}
-                      </h2>
-                      <p
-                        className="text-black/35 font-sans leading-snug tracking-tight"
-                        style={{ fontSize: 'clamp(16px, 2.2vw, 28px)' }}
-                      >
-                        {project.tagline}
-                      </p>
-                    </div>
+                  <div className="space-y-3">
+                    <span className="inline-block border border-black/20 text-black/40 font-sans text-xs tracking-widest uppercase rounded-full px-3 py-1">
+                      Project
+                    </span>
+                    <h2
+                      className="text-black font-sans font-medium leading-tight tracking-tight"
+                      style={{ fontSize: 'clamp(22px, 3.5vw, 44px)' }}
+                    >
+                      {project.title}
+                    </h2>
+                    <p
+                      className="text-black/35 font-sans leading-snug tracking-tight"
+                      style={{ fontSize: 'clamp(16px, 2.2vw, 28px)' }}
+                    >
+                      {project.tagline}
+                    </p>
                   </div>
 
                   <div className="border-t border-black/8" />
