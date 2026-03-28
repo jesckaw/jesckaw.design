@@ -43,7 +43,7 @@ function OutsideCarousel() {
           <div
             key={i}
             className="shrink-0 rounded-2xl flex items-end p-5"
-            style={{ backgroundColor: card.color, width: '220px', height: '220px' }}
+            style={{ backgroundColor: card.color, width: '340px', height: '340px' }}
           >
             <span className="font-sans font-semibold text-[#0A0A0A] text-base">{card.label}</span>
           </div>
