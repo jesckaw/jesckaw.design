@@ -15,6 +15,18 @@ export interface Project {
   services: string[]
   year: string
   imageUrl?: string
+  /**
+   * Gallery images displayed in a repeating pattern:
+   *   [0] → landscape (full width)
+   *   [1],[2] → side by side
+   *   [3] → landscape
+   *   [4],[5] → side by side
+   *   … and so on.
+   *
+   * Each entry is an image URL string.
+   * Add images in groups of 3 to keep the pattern complete.
+   */
+  gallery?: string[]
 }
 
 interface CaseStudyModalProps {
@@ -141,6 +153,41 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     <p className="text-black/70 font-sans text-sm">{project.year}</p>
                   </div>
                 </div>
+
+                {/* Gallery — repeating: 1 landscape, 2 side-by-side */}
+                {project.gallery && project.gallery.length > 0 && (
+                  <div className="px-6 pb-8 flex flex-col gap-3">
+                    {project.gallery.map((src, i) => {
+                      const posInGroup = i % 3
+                      // Landscape image (first in each group of 3)
+                      if (posInGroup === 0) {
+                        return (
+                          <div key={i} className="w-full rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '16/9' }}>
+                            <img src={src} alt="" className="w-full h-full object-cover" />
+                          </div>
+                        )
+                      }
+                      // Left of the pair (second in group) — render both side-by-side
+                      if (posInGroup === 1) {
+                        const rightSrc = project.gallery?.[i + 1]
+                        return (
+                          <div key={i} className="grid grid-cols-2 gap-3">
+                            <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
+                              <img src={src} alt="" className="w-full h-full object-cover" />
+                            </div>
+                            {rightSrc && (
+                              <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
+                                <img src={rightSrc} alt="" className="w-full h-full object-cover" />
+                              </div>
+                            )}
+                          </div>
+                        )
+                      }
+                      // Right of the pair (third in group) — already rendered above
+                      return null
+                    })}
+                  </div>
+                )}
               </div>
             </motion.div>
           </div>

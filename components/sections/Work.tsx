@@ -15,6 +15,13 @@ const projects: Project[] = [
     focus: 'Fintech',
     services: ['Product Design', 'UX Research', 'Design System', 'Prototyping', 'Motion & Interaction'],
     year: '2024',
+    // Gallery: pattern is [landscape, left, right, landscape, left, right, ...]
+    // Replace these placeholder paths with real images when ready
+    gallery: [
+      '/images/aura/landscape-1.jpg',   // landscape (full width)
+      '/images/aura/detail-1.jpg',       // side-by-side left
+      '/images/aura/detail-2.jpg',       // side-by-side right
+    ],
   },
   {
     id: 2,
@@ -26,6 +33,11 @@ const projects: Project[] = [
     focus: 'AI / Productivity',
     services: ['Product Design', 'Interaction Design', 'Brand Identity', 'Prototyping'],
     year: '2024',
+    gallery: [
+      '/images/aibao/landscape-1.jpg',
+      '/images/aibao/detail-1.jpg',
+      '/images/aibao/detail-2.jpg',
+    ],
   },
   {
     id: 3,
@@ -37,6 +49,11 @@ const projects: Project[] = [
     focus: 'Productivity',
     services: ['Product Design', 'UX Architecture', 'Design System', 'Content Strategy'],
     year: '2023',
+    gallery: [
+      '/images/noteable/landscape-1.jpg',
+      '/images/noteable/detail-1.jpg',
+      '/images/noteable/detail-2.jpg',
+    ],
   },
   {
     id: 4,
@@ -48,6 +65,11 @@ const projects: Project[] = [
     focus: 'Social / Community',
     services: ['Product Design', 'UX Research', 'Brand Ecosystem', 'Motion & Interaction'],
     year: '2023',
+    gallery: [
+      '/images/hoolii/landscape-1.jpg',
+      '/images/hoolii/detail-1.jpg',
+      '/images/hoolii/detail-2.jpg',
+    ],
   },
 ]
 
