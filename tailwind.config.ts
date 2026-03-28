@@ -9,8 +9,8 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["'Syne'", 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ["'Cormorant Garamond'", 'Georgia', 'serif'],
+        sans: ["'Plus Jakarta Sans'", 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ["'Instrument Serif'", 'Georgia', 'serif'],
       },
     },
   },
