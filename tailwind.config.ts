@@ -10,7 +10,7 @@ const config: Config = {
     extend: {
       fontFamily: {
         sans: ["'Plus Jakarta Sans'", 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        serif: ["'Instrument Serif'", 'Georgia', 'serif'],
+        serif: ["'Cormorant Garamond'", 'Georgia', 'serif'],
       },
     },
   },
