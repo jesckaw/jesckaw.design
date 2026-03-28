@@ -10,6 +10,55 @@ const experience = [
   { company: 'Noteable', role: 'Product designer', year: '2022' },
 ]
 
+const outsideCards = [
+  { label: 'Photography', color: '#F0EEFF' },
+  { label: 'Hiking', color: '#ECFDF5' },
+  { label: 'Cooking', color: '#FFF7ED' },
+  { label: 'Reading', color: '#EEF2FF' },
+  { label: 'Music', color: '#FFF1F2' },
+  { label: 'Travel', color: '#EFF6FF' },
+  { label: 'Film', color: '#F0FDF4' },
+  { label: 'Ceramics', color: '#FFFBEB' },
+]
+
+function OutsideCarousel() {
+  const [paused, setPaused] = useState(false)
+  const doubled = [...outsideCards, ...outsideCards]
+
+  return (
+    <div
+      className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div
+        className="flex gap-4 py-1"
+        style={{
+          animation: 'outside-marquee 22s linear infinite',
+          animationPlayState: paused ? 'paused' : 'running',
+          width: 'max-content',
+        }}
+      >
+        {doubled.map((card, i) => (
+          <div
+            key={i}
+            className="shrink-0 rounded-2xl flex items-end p-5"
+            style={{ backgroundColor: card.color, width: '220px', height: '220px' }}
+          >
+            <span className="font-sans font-semibold text-[#0A0A0A] text-base">{card.label}</span>
+          </div>
+        ))}
+      </div>
+      <style>{`
+        @keyframes outside-marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  )
+}
+
 function Sparkle({ size = 18, className = '' }: { size?: number; className?: string }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
@@ -235,18 +284,10 @@ export default function About() {
         <h3 className="font-sans font-bold text-[#0A0A0A] mb-5" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>
           Outside of <span className="font-serif italic font-normal">design</span>
         </h3>
-        <div className="grid grid-cols-3 gap-4">
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="aspect-square bg-[#D9D9D9]/60 rounded-2xl"
-            />
-          ))}
-        </div>
       </motion.div>
+
+      {/* Carousel — bleeds edge to edge */}
+      <OutsideCarousel />
     </div>
   )
 }
