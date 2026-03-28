@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useEffect } from 'react'
+import { createPortal } from 'react-dom'
 
 export interface Project {
   id: number
@@ -28,7 +29,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {project && (
         <>
@@ -145,6 +146,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
           </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
