@@ -88,9 +88,15 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.18 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all duration-300 min-h-[140px] sm:min-h-0 text-left w-full cursor-pointer"
+              className="rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all duration-300 min-h-[140px] sm:min-h-0 text-left w-full cursor-pointer flex flex-col justify-between p-5 sm:p-6"
               style={{ backgroundColor: project.color }}
-            />
+            >
+              <span className="text-sm text-black/40 font-medium">{project.category}</span>
+              <div>
+                <span className="block text-xl sm:text-2xl font-semibold text-black mb-1">{project.title}</span>
+                <span className="block text-sm sm:text-base text-black/40 leading-snug">{project.tagline}</span>
+              </div>
+            </motion.button>
           ))}
         </div>
       </div>
