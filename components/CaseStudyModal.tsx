@@ -27,6 +27,12 @@ export interface Project {
    * Add images in groups of 3 to keep the pattern complete.
    */
   gallery?: string[]
+  /**
+   * Outcome section shown after the gallery.
+   * Each string is rendered as a separate paragraph.
+   * Use "→ " prefix for result/stat lines.
+   */
+  outcome?: string[]
 }
 
 interface CaseStudyModalProps {
@@ -186,6 +192,22 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                       // Right of the pair (third in group) — already rendered above
                       return null
                     })}
+                  </div>
+                )}
+
+                {/* Outcome */}
+                {project.outcome && project.outcome.length > 0 && (
+                  <div className="px-6 pb-8">
+                    <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
+                      <p className="text-black/70 font-sans text-sm font-medium">Outcome</p>
+                      <div className="space-y-4">
+                        {project.outcome.map((text, i) => (
+                          <p key={i} className="text-black/45 font-sans text-sm leading-relaxed whitespace-pre-line">
+                            {text}
+                          </p>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 )}
               </div>

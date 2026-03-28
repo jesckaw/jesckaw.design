@@ -22,6 +22,12 @@ const projects: Project[] = [
       '/images/aura/detail-1.jpg',       // side-by-side left
       '/images/aura/detail-2.jpg',       // side-by-side right
     ],
+    // Outcome: each string is a paragraph. Use "→ " prefix for stats.
+    outcome: [
+      'The redesigned experience brought clarity to every step of the financial journey — from first signup to daily check-ins.',
+      'By simplifying complex data into digestible, actionable views, we helped users feel more confident and in control of their money.',
+      'And the results followed:\n→ 34% increase in daily active users\n→ 18% improvement in onboarding completion\n→ 27% reduction in support tickets',
+    ],
   },
   {
     id: 2,
@@ -37,6 +43,11 @@ const projects: Project[] = [
       '/images/aibao/landscape-1.jpg',
       '/images/aibao/detail-1.jpg',
       '/images/aibao/detail-2.jpg',
+    ],
+    outcome: [
+      'Aibao launched to strong early adoption, with users praising how natural and unobtrusive the AI felt in their daily workflow.',
+      'The interaction model we designed struck the right balance — helpful without being pushy, smart without being overwhelming.',
+      'And the results followed:\n→ 40% increase in task completion rate\n→ 52% of users active daily within the first month\n→ 4.8 average app store rating at launch',
     ],
   },
   {
@@ -54,6 +65,11 @@ const projects: Project[] = [
       '/images/noteable/detail-1.jpg',
       '/images/noteable/detail-2.jpg',
     ],
+    outcome: [
+      'Noteable gave knowledge workers a system that finally matched how they think — fluid, connected, and fast enough to keep up with ideas in motion.',
+      'The flexible architecture we built supports everything from quick daily notes to deep research webs, without sacrificing speed or simplicity.',
+      'And the results followed:\n→ 3x increase in average session length\n→ 60% of users created linked notes within the first week\n→ 28% growth in organic signups month-over-month',
+    ],
   },
   {
     id: 4,
@@ -69,6 +85,11 @@ const projects: Project[] = [
       '/images/hoolii/landscape-1.jpg',
       '/images/hoolii/detail-1.jpg',
       '/images/hoolii/detail-2.jpg',
+    ],
+    outcome: [
+      'Hoolii made it genuinely easy for people to find communities that match their interests and actually show up to real-world events.',
+      'The design centered on reducing friction at every step — from discovering a group to coordinating plans with members.',
+      'And the results followed:\n→ 45% of new users joined a group within 48 hours\n→ 32% increase in event attendance rates\n→ 67% monthly retention among active group members',
     ],
   },
 ]
