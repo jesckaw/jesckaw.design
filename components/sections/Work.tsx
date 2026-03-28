@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion } from 'framer-motion'
 import CaseStudyModal, { type Project } from '@/components/CaseStudyModal'
 
@@ -51,8 +51,29 @@ const projects: Project[] = [
   },
 ]
 
+function ProjectCard({ project, onClick }: { project: Project; onClick: () => void }) {
+  return (
+    <button
+      onClick={onClick}
+      className="shrink-0 rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all duration-300 text-left cursor-pointer flex flex-col justify-between p-5"
+      style={{
+        backgroundColor: project.color,
+        width: '280px',
+        height: '200px',
+      }}
+    >
+      <span className="text-xs font-medium text-black/40 uppercase tracking-wider">{project.category}</span>
+      <div>
+        <p className="font-sans font-semibold text-[#0A0A0A] text-lg leading-snug">{project.title}</p>
+        <p className="text-sm text-black/50 mt-1 line-clamp-2">{project.tagline}</p>
+      </div>
+    </button>
+  )
+}
+
 export default function Work({ onModalChange }: { onModalChange?: (open: boolean) => void }) {
   const [selected, setSelected] = useState<Project | null>(null)
+  const [paused, setPaused] = useState(false)
 
   function openModal(project: Project) {
     setSelected(project)
@@ -64,35 +85,53 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
     onModalChange?.(false)
   }
 
+  // Duplicate cards for seamless loop
+  const doubled = [...projects, ...projects]
+
   return (
     <>
-      <div className="relative w-full h-full flex flex-col overflow-hidden pt-24 sm:pt-28 md:pt-36 page-x pb-6 sm:pb-10">
+      <div className="relative w-full h-full flex flex-col overflow-hidden pt-24 sm:pt-28 md:pt-36 pb-6 sm:pb-10">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.08, duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="font-sans font-medium leading-none tracking-tight mb-5 sm:mb-8 shrink-0"
+          className="font-sans font-medium leading-none tracking-tight mb-5 sm:mb-8 shrink-0 page-x"
           style={{ fontSize: 'clamp(28px, 4.5vw, 60px)' }}
         >
           Selected{' '}
           <span className="font-serif italic font-normal" style={{ fontSize: '1.05em' }}>works</span>
         </motion.h2>
 
-        {/* Grid — 1 col on mobile, 2 cols on sm+ */}
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 min-h-0">
-          {projects.map((project, i) => (
-            <motion.button
-              key={project.id}
-              onClick={() => openModal(project)}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.18 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="rounded-2xl hover:opacity-90 active:scale-[0.98] transition-all duration-300 min-h-[140px] sm:min-h-0 text-left w-full cursor-pointer"
-              style={{ backgroundColor: project.color }}
-            />
-          ))}
-        </div>
+        {/* Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.18, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+          className="w-full overflow-hidden"
+          onMouseEnter={() => setPaused(true)}
+          onMouseLeave={() => setPaused(false)}
+        >
+          <div
+            className="flex gap-4"
+            style={{
+              animation: `marquee 18s linear infinite`,
+              animationPlayState: paused ? 'paused' : 'running',
+              width: 'max-content',
+            }}
+          >
+            {doubled.map((project, i) => (
+              <ProjectCard key={`${project.id}-${i}`} project={project} onClick={() => openModal(project)} />
+            ))}
+          </div>
+        </motion.div>
+
+        <style>{`
+          @keyframes marquee {
+            0%   { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+        `}</style>
       </div>
 
       <CaseStudyModal project={selected} onClose={closeModal} />
