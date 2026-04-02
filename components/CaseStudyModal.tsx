@@ -62,7 +62,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
           <div className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none" style={{ padding: '24px' }}>
             <motion.div
               key="modal"
-              className="w-full max-w-2xl flex flex-col rounded-3xl overflow-hidden pointer-events-auto"
+              className="w-full max-w-4xl flex flex-col rounded-3xl overflow-hidden pointer-events-auto"
               style={{ maxHeight: 'calc(100vh - 48px)', backgroundColor: '#FDFCF8' }}
               initial={{ y: 40, opacity: 0, scale: 0.97 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
