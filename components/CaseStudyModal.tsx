@@ -15,18 +15,14 @@ export interface Project {
   services: string[]
   year: string
   imageUrl?: string
-  /**
-   * Gallery images displayed in a repeating pattern:
-   *   [0] → landscape (full width)
-   *   [1],[2] → side by side
-   *   [3] → landscape
-   *   [4],[5] → side by side
-   *   … and so on.
-   *
-   * Each entry is an image URL string.
-   * Add images in groups of 3 to keep the pattern complete.
-   */
   gallery?: string[]
+  /**
+   * Defines the gallery layout as a sequence of rows.
+   * 'full' = single full-width image, 'pair' = two images side by side.
+   * Images are consumed in order from the gallery array.
+   * If omitted, defaults to repeating [full, pair] pattern.
+   */
+  galleryLayout?: ('full' | 'pair')[]
   /**
    * Outcome section shown after the gallery.
    * Each string is rendered as a separate paragraph.
@@ -160,38 +156,52 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                   </div>
                 </div>
 
-                {/* Gallery — repeating: 1 landscape, 2 side-by-side */}
+                {/* Gallery */}
                 {project.gallery && project.gallery.length > 0 && (
                   <div className="px-6 pb-8 flex flex-col gap-3">
-                    {project.gallery.map((src, i) => {
-                      const posInGroup = i % 3
-                      // Landscape image (first in each group of 3)
-                      if (posInGroup === 0) {
-                        return (
-                          <div key={i} className="w-full rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '16/9' }}>
-                            <img src={src} alt="" className="w-full h-full object-cover" />
-                          </div>
-                        )
-                      }
-                      // Left of the pair (second in group) — render both side-by-side
-                      if (posInGroup === 1) {
-                        const rightSrc = project.gallery?.[i + 1]
-                        return (
-                          <div key={i} className="grid grid-cols-2 gap-3">
-                            <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
+                    {(() => {
+                      const images = project.gallery!
+                      let idx = 0
+                      // Build layout: use custom galleryLayout or default repeating [full, pair]
+                      const layout = project.galleryLayout ?? (() => {
+                        const rows: ('full' | 'pair')[] = []
+                        let remaining = images.length
+                        while (remaining > 0) {
+                          rows.push('full'); remaining--
+                          if (remaining >= 2) { rows.push('pair'); remaining -= 2 }
+                          else if (remaining === 1) { rows.push('full'); remaining-- }
+                        }
+                        return rows
+                      })()
+
+                      return layout.map((type, rowIdx) => {
+                        if (type === 'full' && idx < images.length) {
+                          const src = images[idx++]
+                          return (
+                            <div key={rowIdx} className="w-full rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '16/9' }}>
                               <img src={src} alt="" className="w-full h-full object-cover" />
                             </div>
-                            {rightSrc && (
+                          )
+                        }
+                        if (type === 'pair' && idx < images.length) {
+                          const leftSrc = images[idx++]
+                          const rightSrc = idx < images.length ? images[idx++] : undefined
+                          return (
+                            <div key={rowIdx} className="grid grid-cols-2 gap-3">
                               <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
-                                <img src={rightSrc} alt="" className="w-full h-full object-cover" />
+                                <img src={leftSrc} alt="" className="w-full h-full object-cover" />
                               </div>
-                            )}
-                          </div>
-                        )
-                      }
-                      // Right of the pair (third in group) — already rendered above
-                      return null
-                    })}
+                              {rightSrc && (
+                                <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
+                                  <img src={rightSrc} alt="" className="w-full h-full object-cover" />
+                                </div>
+                              )}
+                            </div>
+                          )
+                        }
+                        return null
+                      })
+                    })()}
                   </div>
                 )}
 
