@@ -39,6 +39,7 @@ const projects: Project[] = [
     focus: 'Branding / F&B',
     services: ['Brand Identity', 'Logo Design', 'Web Design', 'Print Design', 'Merchandise'],
     year: '2024',
+    imageUrl: '/aibao3.png',
     gallery: [
       '/aibao1.png',
       '/aibao2.png',
