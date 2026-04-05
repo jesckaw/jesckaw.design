@@ -15,13 +15,20 @@ const projects: Project[] = [
     focus: 'Fintech',
     services: ['Product Design', 'UX Research', 'Design System', 'Prototyping', 'Motion & Interaction'],
     year: '2024',
-    // Gallery: pattern is [landscape, left, right, landscape, left, right, ...]
-    // Replace these placeholder paths with real images when ready
+    imageUrl: '/aura3.png',
     gallery: [
-      '/images/aura/landscape-1.jpg',   // landscape (full width)
-      '/images/aura/detail-1.jpg',       // side-by-side left
-      '/images/aura/detail-2.jpg',       // side-by-side right
+      '/aura1.png',
+      '/aura2.png',
+      '/aura3.png',
+      '/aura4.png',
+      '/aura5.png',
+      '/aura6.png',
+      '/aura7.png',
+      '/aura8.png',
+      '/aura9.png',
+      '/aura10.png',
     ],
+    galleryLayout: ['pair', 'full', 'full', 'full', 'pair', 'full', 'full', 'full'],
     // Outcome: each string is a paragraph. Use "→ " prefix for stats.
     outcome: [
       'The redesigned experience brought clarity to every step of the financial journey — from first signup to daily check-ins.',
