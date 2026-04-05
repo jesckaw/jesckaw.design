@@ -1,8 +1,9 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { createPortal } from 'react-dom'
+import Image from 'next/image'
 
 export interface Project {
   id: number
@@ -34,6 +35,26 @@ export interface Project {
 interface CaseStudyModalProps {
   project: Project | null
   onClose: () => void
+}
+
+function GalleryImage({ src, aspectRatio, sizes }: { src: string; aspectRatio: string; sizes: string }) {
+  const [loaded, setLoaded] = useState(false)
+
+  return (
+    <div className="rounded-2xl overflow-hidden bg-black/5 relative" style={{ aspectRatio }}>
+      {!loaded && (
+        <div className="absolute inset-0 animate-pulse bg-black/5" />
+      )}
+      <Image
+        src={src}
+        alt=""
+        fill
+        className={`object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        sizes={sizes}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  )
 }
 
 export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
@@ -93,10 +114,13 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                   style={{ aspectRatio: '16/7', backgroundColor: project.color }}
                 >
                   {project.imageUrl && (
-                    <img
+                    <Image
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 896px) 100vw, 896px"
+                      priority
                     />
                   )}
                 </div>
@@ -162,7 +186,6 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     {(() => {
                       const images = project.gallery!
                       let idx = 0
-                      // Build layout: use custom galleryLayout or default repeating [full, pair]
                       const layout = project.galleryLayout ?? (() => {
                         const rows: ('full' | 'pair')[] = []
                         let remaining = images.length
@@ -178,9 +201,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                         if (type === 'full' && idx < images.length) {
                           const src = images[idx++]
                           return (
-                            <div key={rowIdx} className="w-full rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '16/9' }}>
-                              <img src={src} alt="" className="w-full h-full object-cover" />
-                            </div>
+                            <GalleryImage key={rowIdx} src={src} aspectRatio="16/9" sizes="(max-width: 896px) 100vw, 848px" />
                           )
                         }
                         if (type === 'pair' && idx < images.length) {
@@ -188,13 +209,9 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                           const rightSrc = idx < images.length ? images[idx++] : undefined
                           return (
                             <div key={rowIdx} className="grid grid-cols-2 gap-3">
-                              <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
-                                <img src={leftSrc} alt="" className="w-full h-full object-cover" />
-                              </div>
+                              <GalleryImage src={leftSrc} aspectRatio="1/1" sizes="(max-width: 896px) 50vw, 420px" />
                               {rightSrc && (
-                                <div className="rounded-2xl overflow-hidden bg-black/5" style={{ aspectRatio: '1/1' }}>
-                                  <img src={rightSrc} alt="" className="w-full h-full object-cover" />
-                                </div>
+                                <GalleryImage src={rightSrc} aspectRatio="1/1" sizes="(max-width: 896px) 50vw, 420px" />
                               )}
                             </div>
                           )
