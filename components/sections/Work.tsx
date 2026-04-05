@@ -15,7 +15,7 @@ const projects: Project[] = [
     focus: 'Fintech',
     services: ['Product Design', 'UX Research', 'Design System', 'Prototyping', 'Motion & Interaction'],
     year: '2024',
-    imageUrl: '/aura3.png',
+    imageUrl: '/aura8.png',
     gallery: [
       '/aura1.png',
       '/aura2.png',
