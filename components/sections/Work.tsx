@@ -148,20 +148,23 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
               style={{ backgroundColor: project.color }}
             >
               {project.imageUrl && (
-                <div className="absolute inset-0">
-                  <Image
-                    src={project.imageUrl}
-                    alt=""
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                  />
-                </div>
+                <>
+                  <div className="absolute inset-0">
+                    <Image
+                      src={project.imageUrl}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 640px) 100vw, 50vw"
+                    />
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                </>
               )}
-              <span className="text-sm text-black/40 font-medium relative z-10">{project.category}</span>
+              <span className={`text-sm font-medium relative z-10 ${project.imageUrl ? 'text-white/70' : 'text-black/40'}`}>{project.category}</span>
               <div className="relative z-10">
-                <span className="block text-xl sm:text-2xl font-semibold text-black mb-1">{project.title}</span>
-                <span className="block text-sm sm:text-base text-black/40 leading-snug">{project.tagline}</span>
+                <span className={`block text-xl sm:text-2xl font-semibold mb-1 ${project.imageUrl ? 'text-white' : 'text-black'}`}>{project.title}</span>
+                <span className={`block text-sm sm:text-base leading-snug ${project.imageUrl ? 'text-white/70' : 'text-black/40'}`}>{project.tagline}</span>
               </div>
             </motion.button>
           ))}
