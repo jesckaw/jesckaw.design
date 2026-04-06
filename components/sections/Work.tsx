@@ -70,6 +70,7 @@ const projects: Project[] = [
     color: '#FFF7ED',
     tagline: 'Where ideas become something worth keeping',
     comingSoon: true,
+    imageUrl: '/noteable3.png',
     description: 'Noteable is a note-taking and knowledge management app for people who think in connections, not folders. We led design from concept to launch — building a system flexible enough for writers, researchers, and makers while staying fast and frictionless for daily capture.',
     focus: 'Productivity',
     services: ['Product Design', 'UX Architecture', 'Design System', 'Content Strategy'],
