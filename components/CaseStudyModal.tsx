@@ -17,6 +17,7 @@ export interface Project {
   year: string
   imageUrl?: string
   gallery?: string[]
+  comingSoon?: boolean
   /**
    * Defines the gallery layout as a sequence of rows.
    * 'full' = single full-width image, 'pair' = two images side by side.
@@ -108,6 +109,14 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
               {/* Scrollable body */}
               <div className="overflow-y-auto flex-1">
+                {project.comingSoon ? (
+                  <div className="flex flex-col items-center justify-center py-24 px-6" style={{ backgroundColor: project.color }}>
+                    <p className="text-black/20 font-sans text-xs uppercase tracking-widest mb-3">Coming Soon</p>
+                    <h2 className="text-black font-sans font-medium text-2xl sm:text-3xl tracking-tight mb-2">{project.title}</h2>
+                    <p className="text-black/40 font-sans text-sm">{project.tagline}</p>
+                  </div>
+                ) : (
+                <>
                 {/* Hero image / color block */}
                 <div
                   className="w-full relative overflow-hidden"
@@ -236,6 +245,8 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                       </div>
                     </div>
                   </div>
+                )}
+                </>
                 )}
               </div>
             </motion.div>
