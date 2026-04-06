@@ -93,6 +93,7 @@ const projects: Project[] = [
     color: '#ECFDF5',
     tagline: 'Bringing groups together around the things they love',
     comingSoon: true,
+    imageUrl: '/hoolii1.png',
     description: 'Hoolii is a social platform built around shared interests and local communities. We designed the full mobile experience — from discovery to group coordination — making it easy for people to find their people and actually show up.',
     focus: 'Social / Community',
     services: ['Product Design', 'UX Research', 'Brand Ecosystem', 'Motion & Interaction'],
