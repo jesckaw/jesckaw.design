@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 
 const experience = [
   { company: 'Aura Finance', role: 'Product designer', year: '2024– 2026' },
@@ -20,28 +20,50 @@ const outsideCards = [
 ]
 
 function OutsideCarousel() {
-  const [paused, setPaused] = useState(false)
-  const doubled = [...outsideCards, ...outsideCards]
+  const scrollRef = useRef<HTMLDivElement>(null)
+
+  const scroll = (direction: 'left' | 'right') => {
+    if (!scrollRef.current) return
+    const amount = 356 // card width (340) + gap (16)
+    scrollRef.current.scrollBy({
+      left: direction === 'right' ? amount : -amount,
+      behavior: 'smooth',
+    })
+  }
 
   return (
-    <div
-      className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden"
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div
-        className="flex gap-4 py-1"
-        style={{
-          animation: 'outside-marquee 22s linear infinite',
-          animationPlayState: paused ? 'paused' : 'running',
-          width: 'max-content',
-        }}
+    <div className="w-screen relative left-1/2 -translate-x-1/2">
+      {/* Arrow buttons */}
+      <button
+        onClick={() => scroll('left')}
+        className="absolute left-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center hover:bg-white transition-colors"
+        aria-label="Scroll left"
       >
-        {doubled.map((card, i) => (
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M10 3L5 8L10 13" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+      <button
+        onClick={() => scroll('right')}
+        className="absolute right-3 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-white/80 backdrop-blur-sm border border-black/10 flex items-center justify-center hover:bg-white transition-colors"
+        aria-label="Scroll right"
+      >
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M6 3L11 8L6 13" stroke="#0A0A0A" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      </button>
+
+      {/* Scrollable track */}
+      <div
+        ref={scrollRef}
+        className="flex gap-4 py-1 overflow-x-auto scrollbar-hide"
+        style={{ scrollSnapType: 'x mandatory' }}
+      >
+        {outsideCards.map((card, i) => (
           <div
             key={i}
             className="shrink-0 rounded-2xl flex items-end p-5 relative overflow-hidden"
-            style={{ width: '340px', height: '340px' }}
+            style={{ width: '340px', height: '340px', scrollSnapAlign: 'start' }}
           >
             <img
               src={card.image}
@@ -52,11 +74,11 @@ function OutsideCarousel() {
           </div>
         ))}
       </div>
+
+      {/* Hide scrollbar */}
       <style>{`
-        @keyframes outside-marquee {
-          0%   { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
       `}</style>
     </div>
   )
