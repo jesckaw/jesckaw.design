@@ -11,14 +11,12 @@ const experience = [
 ]
 
 const outsideCards = [
-  { label: 'Photography', color: '#F0EEFF' },
-  { label: 'Hiking', color: '#ECFDF5' },
-  { label: 'Cooking', color: '#FFF7ED' },
-  { label: 'Reading', color: '#EEF2FF' },
-  { label: 'Music', color: '#FFF1F2' },
-  { label: 'Travel', color: '#EFF6FF' },
-  { label: 'Film', color: '#F0FDF4' },
-  { label: 'Ceramics', color: '#FFFBEB' },
+  { label: 'San Francisco, CA', image: '/about1.png' },
+  { label: 'Kyoto, Japan', image: '/about2.png' },
+  { label: 'Big Sur, CA', image: '/about3.png' },
+  { label: 'Seoul, South Korea', image: '/about4.png' },
+  { label: 'New York, NY', image: '/about5.png' },
+  { label: 'Barcelona, Spain', image: '/about6.png' },
 ]
 
 function OutsideCarousel() {
@@ -42,10 +40,16 @@ function OutsideCarousel() {
         {doubled.map((card, i) => (
           <div
             key={i}
-            className="shrink-0 rounded-2xl flex items-end p-5"
-            style={{ backgroundColor: card.color, width: '340px', height: '340px' }}
+            className="shrink-0 rounded-2xl flex items-end p-5 relative overflow-hidden"
+            style={{ width: '340px', height: '340px' }}
           >
-            <span className="font-sans font-semibold text-[#0A0A0A] text-base">{card.label}</span>
+            <img
+              src={card.image}
+              alt={card.label}
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <span className="relative font-sans font-semibold text-white text-base">{card.label}</span>
           </div>
         ))}
       </div>
