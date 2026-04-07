@@ -48,8 +48,7 @@ function OutsideCarousel() {
               alt={card.label}
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-            <span className="relative font-sans font-semibold text-white text-base">{card.label}</span>
+            <span className="relative font-sans font-semibold text-white text-base" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{card.label}</span>
           </div>
         ))}
       </div>
