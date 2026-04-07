@@ -11,12 +11,12 @@ const experience = [
 ]
 
 const outsideCards = [
-  { label: 'San Francisco, CA', image: '/about1.png' },
-  { label: 'Kyoto, Japan', image: '/about2.png' },
-  { label: 'Big Sur, CA', image: '/about3.png' },
-  { label: 'Seoul, South Korea', image: '/about4.png' },
-  { label: 'New York, NY', image: '/about5.png' },
-  { label: 'Barcelona, Spain', image: '/about6.png' },
+  { label: 'Guangzhou, China', image: '/about1.png' },
+  { label: 'San Francisco, CA', image: '/about2.png' },
+  { label: 'Davis, CA', image: '/about3.png' },
+  { label: 'Guangzhou, China', image: '/about4.png' },
+  { label: 'Lake Tahoe', image: '/about5.png' },
+  { label: 'San Diego, CA', image: '/about6.png' },
 ]
 
 function OutsideCarousel() {
@@ -48,7 +48,7 @@ function OutsideCarousel() {
               alt={card.label}
               className="absolute inset-0 w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
             <span className="relative font-sans font-semibold text-white text-base">{card.label}</span>
           </div>
         ))}
