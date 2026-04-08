@@ -12,8 +12,9 @@ export interface Project {
   color: string
   tagline: string
   description: string
-  focus: string
-  services: string[]
+  role: string
+  company: string
+  skills: string[]
   year: string
   imageUrl?: string
   gallery?: string[]
@@ -161,31 +162,38 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
                   <div className="border-t border-black/8" />
 
-                  {/* Focus + description */}
+                  {/* Role */}
                   <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
-                    <div>
-                      <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Focus</p>
-                      <p className="text-black/70 font-sans text-sm mt-1.5">{project.focus}</p>
-                    </div>
-                    <p className="text-black/55 font-sans text-sm leading-relaxed">
-                      {project.description}
-                    </p>
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Role</p>
+                    <p className="text-black/70 font-sans text-sm">{project.role}</p>
                   </div>
 
-                  {/* Services */}
+                  {/* Company */}
                   <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
-                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Services</p>
-                    <div className="flex flex-col gap-1">
-                      {project.services.map((s) => (
-                        <p key={s} className="text-black/70 font-sans text-sm">{s}</p>
-                      ))}
-                    </div>
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Company</p>
+                    <p className="text-black/70 font-sans text-sm">{project.company}</p>
+                  </div>
+
+                  {/* Skills */}
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Skills</p>
+                    <p className="text-black/70 font-sans text-sm">{project.skills.join(', ')}</p>
                   </div>
 
                   {/* Year */}
-                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 pb-2">
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
                     <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Year</p>
                     <p className="text-black/70 font-sans text-sm">{project.year}</p>
+                  </div>
+
+                  <div className="border-t border-black/8" />
+
+                  {/* Description */}
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 pb-2">
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">About</p>
+                    <p className="text-black/55 font-sans text-sm leading-relaxed">
+                      {project.description}
+                    </p>
                   </div>
                 </div>
 
