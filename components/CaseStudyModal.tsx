@@ -186,11 +186,9 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                     <p className="text-black/70 font-sans text-sm">{project.year}</p>
                   </div>
 
-                  <div className="border-t border-black/8" />
-
                   {/* Description */}
                   <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 pb-2">
-                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">About</p>
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Overview</p>
                     <p className="text-black/55 font-sans text-sm leading-relaxed">
                       {project.description}
                     </p>
