@@ -242,7 +242,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                   <div className="px-6 pb-8">
                     <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
                       <p className="text-black/70 font-sans text-sm font-medium">Outcome</p>
-                      <div className="space-y-6">
+                      <div className="space-y-4">
                         {project.outcome.map((text, i) => (
                           <p key={i} className="text-black/45 font-sans text-sm leading-relaxed whitespace-pre-line">
                             {text}

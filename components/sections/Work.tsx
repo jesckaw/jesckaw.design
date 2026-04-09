@@ -33,7 +33,7 @@ const projects: Project[] = [
     galleryLayout: ['pair', 'full', 'full', 'full', 'pair', 'full', 'full', 'full'],
     // Outcome: each string is a paragraph. Use "→ " prefix for stats.
     outcome: [
-      'I took Aura from concept to delivery across mobile, web, and marketing — building a unified design system that scaled with the product as it expanded to desktop.',
+      'I took Aura from concept to delivery across mobile, web, and marketing, building a unified design system that scaled with the product as it expanded to desktop.',
       'Through research, I uncovered that employees lacked the confidence to act on their finances. I redesigned the guided action model to bridge the gap between coaching and daily behavior, turning intention into lasting habits.',
       'And the results followed:\n→ 34% increase in daily active users\n→ 18% improvement in onboarding completion\n→ 27% reduction in support tickets',
     ],
