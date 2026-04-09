@@ -7,8 +7,8 @@ import { useState } from 'react'
 const experience = [
   { company: 'Aura Finance', role: 'Product designer', year: '2024 – Present' },
   { company: 'Aibao', role: 'Brand designer', year: '2024 – Present' },
-  { company: 'Hooli', role: 'Product designer', year: '2022' },
   { company: 'Noteable', role: 'Product designer', year: '2023' },
+  { company: 'Hooli', role: 'Product designer', year: '2022' },
 ]
 
 const outsideCards = [
