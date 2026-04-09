@@ -44,7 +44,7 @@ const projects: Project[] = [
     category: 'Branding',
     color: '#FFF8E7',
     tagline: 'Crafting a brand as warm as the food it serves',
-    description: 'Aibao is a family-owned restaurant I co-founded, serving handmade comfort food and drinks. I led the brand from the ground up — designing menus, packaging, and photography to create a warm, playful identity across every touchpoint, from the storefront to the screen.',
+    description: 'I built Aibao\'s full brand identity from the ground up — from the playful mascot and logo system to web design, print collateral, and merchandise. I shaped a warm, approachable presence across every touchpoint, from the storefront to the screen, creating a brand that feels as comforting as the food itself.',
     role: 'Brand Designer',
     company: 'Aibao',
     skills: ['Brand Identity', 'Logo Design', 'Web Design', 'Print Design', 'Merchandise'],
