@@ -56,7 +56,7 @@ export default function TopNav({
 
       {/* Icon buttons */}
       {iconItems.map((item) => (
-        <div key={item.id} className="relative flex flex-col items-center gap-1 shrink-0 group">
+        <div key={item.id} className="relative shrink-0 group">
           {/* Tooltip */}
           <span className="absolute top-full mt-2 left-1/2 -translate-x-1/2 bg-[#0A0A0A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-150 pointer-events-none">
             {item.label}
@@ -70,7 +70,7 @@ export default function TopNav({
           >
             {item.icon}
           </button>
-          <div className={`w-1 h-1 rounded-full bg-[#0A0A0A] transition-opacity duration-200 ${active === item.id ? 'opacity-100' : 'opacity-0'}`} />
+          <div className={`absolute left-1/2 -translate-x-1/2 -bottom-1.5 w-1 h-1 rounded-full bg-[#0A0A0A] transition-opacity duration-200 ${active === item.id ? 'opacity-100' : 'opacity-0'}`} />
         </div>
       ))}
 
