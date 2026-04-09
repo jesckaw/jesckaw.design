@@ -1,6 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const experience = [
@@ -40,15 +41,18 @@ function OutsideCarousel() {
         {doubled.map((card, i) => (
           <div
             key={i}
-            className="shrink-0 rounded-2xl flex items-end p-5 relative overflow-hidden"
+            className="shrink-0 rounded-2xl flex items-end p-5 relative overflow-hidden bg-black/5"
             style={{ width: '340px', height: '340px' }}
           >
-            <img
+            <Image
               src={card.image}
               alt={card.label}
-              className="absolute inset-0 w-full h-full object-cover"
+              fill
+              className="object-cover"
+              sizes="340px"
+              loading={i < 6 ? 'eager' : 'lazy'}
             />
-            <span className="relative font-sans font-semibold text-white text-base" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{card.label}</span>
+            <span className="relative font-sans font-semibold text-white text-base z-10" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{card.label}</span>
           </div>
         ))}
       </div>
