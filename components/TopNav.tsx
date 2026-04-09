@@ -42,11 +42,11 @@ export default function TopNav({
   onNavigate: (s: Section) => void
 }) {
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 sm:gap-3.5 bg-white border border-black/[0.08] rounded-full px-4 sm:px-6 py-2.5 shadow-sm max-w-[calc(100vw-24px)]">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-3.5 bg-white border border-black/[0.08] rounded-full px-3 sm:px-6 py-2 sm:py-2.5 shadow-sm max-w-[calc(100vw-24px)]">
       {/* Name */}
       <button
         onClick={() => onNavigate('home')}
-        className="font-serif italic text-[#0A0A0A] text-[24px] sm:text-[28px] mr-0.5 sm:mr-1 shrink-0 group/name overflow-hidden"
+        className="font-serif italic text-[#0A0A0A] text-[20px] sm:text-[28px] mr-0 sm:mr-1 shrink-0 group/name overflow-hidden"
       >
         <span className="grid">
           <span className="[grid-area:1/1] transition-all duration-300 ease-in-out group-hover/name:opacity-0 group-hover/name:-translate-y-2">jessica</span>
@@ -64,7 +64,7 @@ export default function TopNav({
           <button
             onClick={() => onNavigate(item.id)}
             aria-label={item.label}
-            className={`w-11 h-11 sm:w-12 sm:h-12 rounded-[12px] flex items-center justify-center text-xl sm:text-2xl transition-colors duration-150 ${
+            className={`w-10 h-10 sm:w-12 sm:h-12 rounded-[12px] flex items-center justify-center text-lg sm:text-2xl transition-colors duration-150 ${
               active === item.id ? 'bg-[#E8E8E8]' : 'bg-[#F3F3F1] hover:bg-[#EBEBEA]'
             }`}
           >
