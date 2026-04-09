@@ -42,11 +42,11 @@ export default function TopNav({
   onNavigate: (s: Section) => void
 }) {
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-3.5 bg-white border border-black/[0.08] rounded-full pl-5 pr-7 sm:pl-6 sm:pr-8 py-2 sm:py-2.5 shadow-sm">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-5 bg-white border border-black/[0.08] rounded-full pl-5 pr-7 sm:px-10 py-2 sm:py-3 shadow-sm">
       {/* Name */}
       <button
         onClick={() => onNavigate('home')}
-        className="font-serif italic text-[#0A0A0A] text-[20px] sm:text-[28px] mr-0 sm:mr-1 shrink-0 group/name overflow-hidden"
+        className="font-serif italic text-[#0A0A0A] text-[20px] sm:text-[28px] mr-0 sm:mr-3 shrink-0 group/name overflow-hidden"
       >
         <span className="grid">
           <span className="[grid-area:1/1] transition-all duration-300 ease-in-out group-hover/name:opacity-0 group-hover/name:-translate-y-2">jessica</span>
