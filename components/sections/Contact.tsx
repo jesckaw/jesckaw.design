@@ -32,7 +32,7 @@ export default function Contact() {
         transition={{ delay: 0.3 }}
         className="text-[15px] text-[#0A0A0A]/40 font-medium max-w-sm mb-12"
       >
-        I'm currently open to new opportunities and collaborations. Say hi — I don't bite! 🌸
+        I'm currently open to new opportunities and collaborations. just say hi, it's easy. 🌸
       </motion.p>
 
       {/* Links */}
