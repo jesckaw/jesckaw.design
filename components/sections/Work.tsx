@@ -33,9 +33,9 @@ const projects: Project[] = [
     galleryLayout: ['pair', 'full', 'full', 'full', 'pair', 'full', 'full', 'full'],
     // Outcome: each string is a paragraph. Use "→ " prefix for stats.
     outcome: [
-      'I built a scalable design system that unified the experience across mobile, web, and marketing — reducing design-to-dev handoff time and enabling the team to ship faster as the product grew.',
-      'Through user research, I identified that employees lacked confidence to engage with their finances. I redesigned the guided action model to turn coaching advice into daily habits, bridging the gap between intention and behavior change.',
-      'The results spoke for themselves:\n→ 34% increase in daily active users\n→ 18% improvement in onboarding completion\n→ 27% reduction in support tickets\n→ Seamless expansion from mobile to desktop with zero drop-off in engagement',
+      'I took Aura from concept to delivery across mobile, web, and marketing — building a unified design system that scaled with the product as it expanded to desktop.',
+      'Through research, I uncovered that employees lacked the confidence to act on their finances. I redesigned the guided action model to bridge the gap between coaching and daily behavior, turning intention into lasting habits.',
+      'And the results followed:\n→ 34% increase in daily active users\n→ 18% improvement in onboarding completion\n→ 27% reduction in support tickets',
     ],
   },
   {
