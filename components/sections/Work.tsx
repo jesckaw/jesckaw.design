@@ -12,7 +12,7 @@ const projects: Project[] = [
     category: 'Fintech',
     color: '#F0EEFF',
     tagline: 'Making personal finance feel less like a chore',
-    description: 'Aura is a personal finance platform built to help people actually understand and act on their money. We redesigned the full product experience — from onboarding through daily use — with a focus on clarity, trust, and reducing cognitive load at every step.',
+    description: 'I led the design of Aura\'s product experience from 0 to 1 — spanning the mobile app, web app, and marketing site. As the team expanded to desktop, I defined how the experience would scale beyond mobile, strengthened the design system, and shaped the end-to-end journey from concept to delivery.',
     role: 'Product Designer',
     company: 'Aura Finance',
     skills: ['Product Design', 'UX Research', 'Design System', 'Prototyping', 'Motion & Interaction', 'Product Strategy'],
