@@ -26,7 +26,7 @@ function ChatButton() {
       )}
       <button
         onClick={handleClick}
-        className="ml-1 bg-[#C9E3F2] text-[#0A0A0A] text-[15px] font-medium px-6 py-2.5 rounded-full hover:bg-[#B8D8ED] transition-colors duration-150 whitespace-nowrap shrink-0"
+        className="ml-3 bg-[#C9E3F2] text-[#0A0A0A] text-[15px] font-medium px-6 py-2.5 rounded-full hover:bg-[#B8D8ED] transition-colors duration-150 whitespace-nowrap shrink-0"
       >
         Chat with me
       </button>
