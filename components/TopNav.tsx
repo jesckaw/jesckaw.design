@@ -42,7 +42,7 @@ export default function TopNav({
   onNavigate: (s: Section) => void
 }) {
   return (
-    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-5 bg-white border border-black/[0.08] rounded-full pl-5 pr-7 sm:px-6 py-2 sm:py-3 shadow-sm">
+    <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 sm:gap-2.5 bg-white border border-black/[0.08] rounded-full pl-5 pr-7 sm:px-6 py-2 sm:py-3 shadow-sm">
       {/* Name */}
       <button
         onClick={() => onNavigate('home')}
