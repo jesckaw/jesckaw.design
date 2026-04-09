@@ -16,7 +16,7 @@ const projects: Project[] = [
     role: 'Product Designer',
     company: 'Aura Finance',
     skills: ['Product Design', 'UX Research', 'Design System', 'Prototyping', 'Motion & Interaction', 'Product Strategy'],
-    year: '2024',
+    year: '2024 – Present',
     imageUrl: '/aura4.png',
     gallery: [
       '/aura1.png',
@@ -48,7 +48,7 @@ const projects: Project[] = [
     role: 'Brand Designer',
     company: 'Aibao',
     skills: ['Brand Identity', 'Logo Design', 'Web Design', 'Print Design', 'Merchandise'],
-    year: '2025',
+    year: '2024 – Present',
     imageUrl: '/aibao3.png',
     gallery: [
       '/aibao1.png',
