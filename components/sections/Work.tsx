@@ -44,7 +44,7 @@ const projects: Project[] = [
     category: 'Branding',
     color: '#FFF8E7',
     tagline: 'Noodles and tea with character',
-    description: 'Aibao is a noodles and tea restaurant brand built from the ground up. We developed the full brand identity — from the playful mascot and logo system to web design, print collateral, and merchandise — creating a warm, approachable presence that feels as comforting as the food itself.',
+    description: 'I built Aibao\'s full brand identity from the ground up — from the playful mascot and logo system to web design, print collateral, and merchandise. I shaped a warm, approachable presence across every touchpoint, from the storefront to the screen, creating a brand that feels as comforting as the food itself.',
     role: 'Brand Designer',
     company: 'Aibao',
     skills: ['Brand Identity', 'Logo Design', 'Web Design', 'Print Design', 'Merchandise'],
@@ -61,8 +61,9 @@ const projects: Project[] = [
     ],
     galleryLayout: ['pair', 'full', 'full', 'pair', 'full'],
     outcome: [
-      'Aibao\'s brand identity brought warmth and personality to every touchpoint — from the storefront to the screen to the business card in your hand.',
-      'The cohesive visual system we built gave the restaurant a memorable, ownable presence that stands out in a crowded food and beverage space.',
+      'I took Aibao from a blank slate to a fully realized brand across physical and digital touchpoints — building the identity, web presence, and print collateral that gave the restaurant a memorable, ownable presence in a crowded food and beverage space.',
+      'Through SEO-optimized web design and UX improvements, I boosted brand clarity and trust, turning organic discovery into real foot traffic. I maintained and iterated on the brand system to support weekly layout updates, content refreshes, and seasonal campaigns.',
+      'And the results followed:\n→ 44% average website conversion, peaking at 68%\n→ 163% increase in organic discovery\n→ Local ranking from 20th to top 5 within 12 months',
     ],
   },
   {
