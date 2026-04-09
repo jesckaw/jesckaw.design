@@ -61,8 +61,8 @@ const projects: Project[] = [
     ],
     galleryLayout: ['pair', 'full', 'full', 'pair', 'full'],
     outcome: [
-      'The brand gave Aibao a recognizable, ownable identity that translated across every touchpoint, from signage and menus to social media and web, creating a cohesive presence that stood out in a crowded food and beverage market.',
-      'A reusable design and copy system made it possible to scale content production without sacrificing quality, enabling weekly layout updates, seasonal campaigns, and consistent storytelling across platforms.',
+      'The brand design I delivered gave Aibao a recognizable, ownable identity across signage, menus, social media, and web, setting it apart in a crowded food and beverage market.',
+      'I also built a reusable design and copy system that scaled content production without sacrificing quality, enabling weekly updates, seasonal campaigns, and consistent storytelling across platforms.',
       'And the results followed:\n→ 44% average website conversion, peaking at 68%\n→ 163% increase in organic discovery\n→ Local ranking from 20th to top 5 within 12 months',
     ],
   },
