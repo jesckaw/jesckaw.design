@@ -265,7 +265,7 @@ export default function About() {
       <motion.div {...fadeUp(0.25)} className="mb-14">
         <h3 className="font-sans font-bold text-[#0A0A0A] mb-1" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>My experience</h3>
         <p className="font-serif italic text-[#0A0A0A]/55 mb-5" style={{ fontSize: 'clamp(16px, 1.5vw, 20px)' }}>
-          in Product, Graphic, and more
+          in Product, Brand, and more
         </p>
         <div className="divide-y divide-black/[0.08]">
           {experience.map(({ company, role, year }, i) => (
