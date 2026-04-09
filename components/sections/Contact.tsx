@@ -69,7 +69,7 @@ export default function Contact() {
         transition={{ delay: 0.7 }}
         className="mt-10 text-[12px] text-[#0A0A0A]/25 font-medium"
       >
-        Designed & built by Jessica ✦ 2024
+        Designed & built by Jessica Mei ✦ 2026
       </motion.p>
       </div>
     </div>
