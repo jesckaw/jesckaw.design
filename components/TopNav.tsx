@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import type { Section } from '@/app/page'
 
 const iconItems: { id: Section; icon: string; label: string }[] = [
@@ -7,6 +8,31 @@ const iconItems: { id: Section; icon: string; label: string }[] = [
   { id: 'work',    icon: '📁', label: 'Work' },
   { id: 'contact', icon: '✉️', label: 'Contact' },
 ]
+
+function ChatButton() {
+  const [show, setShow] = useState(false)
+
+  function handleClick() {
+    setShow(true)
+    setTimeout(() => setShow(false), 2000)
+  }
+
+  return (
+    <div className="relative hidden sm:block">
+      {show && (
+        <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 bg-[#0A0A0A] text-white text-[11px] font-semibold px-2.5 py-1 rounded-lg whitespace-nowrap animate-fade-in pointer-events-none">
+          Coming soon
+        </span>
+      )}
+      <button
+        onClick={handleClick}
+        className="ml-1 bg-[#C9E3F2] text-[#0A0A0A] text-[15px] font-medium px-6 py-2.5 rounded-full hover:bg-[#B8D8ED] transition-colors duration-150 whitespace-nowrap shrink-0"
+      >
+        Chat with me
+      </button>
+    </div>
+  )
+}
 
 export default function TopNav({
   active,
@@ -49,12 +75,7 @@ export default function TopNav({
       ))}
 
       {/* Chat CTA — hidden on small screens since ✉️ covers contact */}
-      <button
-        onClick={() => onNavigate('contact')}
-        className="hidden sm:block ml-1 bg-[#C9E3F2] text-[#0A0A0A] text-[15px] font-medium px-6 py-2.5 rounded-full hover:bg-[#B8D8ED] transition-colors duration-150 whitespace-nowrap shrink-0"
-      >
-        Chat with me
-      </button>
+      <ChatButton />
     </div>
   )
 }
