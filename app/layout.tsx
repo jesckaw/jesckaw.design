@@ -2,10 +2,10 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Jesckaw — Design & Creative',
+  title: 'Jessica Mei | Product Designer',
   description: 'UX Designer crafting digital experiences with curiosity, care, and a touch of magic.',
   openGraph: {
-    title: 'Jesckaw — Design & Creative',
+    title: 'Jessica Mei | Product Designer',
     description: 'UX Designer & Creative — thoughtful digital experiences.',
     url: 'https://jesckaw.design',
     siteName: 'Jesckaw',

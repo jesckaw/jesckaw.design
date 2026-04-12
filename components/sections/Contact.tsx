@@ -9,8 +9,8 @@ const links = [
 
 export default function Contact() {
   return (
-    <div className="w-full h-full overflow-y-auto pt-24 sm:pt-28 md:pt-36 page-x">
-      <div className="flex flex-col items-center text-center pb-28">
+    <div className="w-full h-full overflow-y-auto pt-24 sm:pt-28 md:pt-36 page-x flex flex-col">
+      <div className="flex flex-col items-center text-center pb-28 my-auto">
       {/* Heading */}
       <motion.h2
         initial={{ opacity: 0, y: 22 }}
@@ -32,7 +32,7 @@ export default function Contact() {
         transition={{ delay: 0.3 }}
         className="text-[15px] text-[#0A0A0A]/40 font-medium max-w-sm mb-12"
       >
-        I'm currently open to new opportunities and collaborations. Say hi — I don't bite! 🌸
+        I'm currently open to new opportunities and collaborations. Just say hi, it's easy. 🌸
       </motion.p>
 
       {/* Links */}
@@ -69,7 +69,7 @@ export default function Contact() {
         transition={{ delay: 0.7 }}
         className="mt-10 text-[12px] text-[#0A0A0A]/25 font-medium"
       >
-        Designed & built by Jessica ✦ 2024
+        Designed & built by Jessica Mei ✦ 2026
       </motion.p>
       </div>
     </div>

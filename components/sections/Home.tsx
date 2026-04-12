@@ -8,18 +8,18 @@ export default function Home() {
     <div className="relative w-full h-full overflow-hidden">
       {/* Blue flower — bottom left */}
       <div
-        className="absolute z-0 pointer-events-none select-none"
-        style={{ bottom: -160, left: -160 }}
+        className="absolute z-0 pointer-events-none select-none w-[280px] h-[280px] sm:w-[500px] sm:h-[500px]"
+        style={{ bottom: -90, left: -90 }}
       >
-        <Image src="/blue-flw.svg" alt="" width={500} height={500} />
+        <Image src="/blue-flw.svg" alt="" fill />
       </div>
 
       {/* Pink flower — right side */}
       <div
-        className="absolute z-0 pointer-events-none select-none"
-        style={{ right: -180, top: '28%' }}
+        className="absolute z-0 pointer-events-none select-none w-[300px] h-[300px] sm:w-[520px] sm:h-[520px]"
+        style={{ right: -100, top: '28%' }}
       >
-        <Image src="/pink-flw.svg" alt="" width={520} height={520} />
+        <Image src="/pink-flw.svg" alt="" fill />
       </div>
 
       {/* Center content */}

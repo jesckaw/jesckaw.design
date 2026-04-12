@@ -1,7 +1,9 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
+import Image from 'next/image'
 
 export interface Project {
   id: number
@@ -10,15 +12,51 @@ export interface Project {
   color: string
   tagline: string
   description: string
-  focus: string
-  services: string[]
+  role: string
+  company: string
+  skills: string[]
   year: string
   imageUrl?: string
+  gallery?: string[]
+  comingSoon?: boolean
+  /**
+   * Defines the gallery layout as a sequence of rows.
+   * 'full' = single full-width image, 'pair' = two images side by side.
+   * Images are consumed in order from the gallery array.
+   * If omitted, defaults to repeating [full, pair] pattern.
+   */
+  galleryLayout?: ('full' | 'pair')[]
+  /**
+   * Outcome section shown after the gallery.
+   * Each string is rendered as a separate paragraph.
+   * Use "→ " prefix for result/stat lines.
+   */
+  outcome?: string[]
 }
 
 interface CaseStudyModalProps {
   project: Project | null
   onClose: () => void
+}
+
+function GalleryImage({ src, aspectRatio, sizes }: { src: string; aspectRatio: string; sizes: string }) {
+  const [loaded, setLoaded] = useState(false)
+
+  return (
+    <div className="rounded-2xl overflow-hidden bg-black/5 relative" style={{ aspectRatio }}>
+      {!loaded && (
+        <div className="absolute inset-0 animate-pulse bg-black/5" />
+      )}
+      <Image
+        src={src}
+        alt=""
+        fill
+        className={`object-cover transition-opacity duration-500 ${loaded ? 'opacity-100' : 'opacity-0'}`}
+        sizes={sizes}
+        onLoad={() => setLoaded(true)}
+      />
+    </div>
+  )
 }
 
 export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
@@ -28,7 +66,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
 
-  return (
+  return createPortal(
     <AnimatePresence>
       {project && (
         <>
@@ -47,7 +85,7 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
           <div className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none" style={{ padding: '24px' }}>
             <motion.div
               key="modal"
-              className="w-full max-w-2xl flex flex-col rounded-3xl overflow-hidden pointer-events-auto"
+              className="w-full max-w-4xl flex flex-col rounded-3xl overflow-hidden pointer-events-auto"
               style={{ maxHeight: 'calc(100vh - 48px)', backgroundColor: '#FDFCF8' }}
               initial={{ y: 40, opacity: 0, scale: 0.97 }}
               animate={{ y: 0, opacity: 1, scale: 1 }}
@@ -72,16 +110,27 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
               {/* Scrollable body */}
               <div className="overflow-y-auto flex-1">
+                {project.comingSoon ? (
+                  <div className="flex flex-col items-center justify-center py-24 px-6" style={{ backgroundColor: project.color }}>
+                    <p className="text-black/20 font-sans text-xs uppercase tracking-widest mb-3">Coming Soon</p>
+                    <h2 className="text-black font-sans font-medium text-2xl sm:text-3xl tracking-tight mb-2">{project.title}</h2>
+                    <p className="text-black/40 font-sans text-sm">{project.tagline}</p>
+                  </div>
+                ) : (
+                <>
                 {/* Hero image / color block */}
                 <div
                   className="w-full relative overflow-hidden"
                   style={{ aspectRatio: '16/7', backgroundColor: project.color }}
                 >
                   {project.imageUrl && (
-                    <img
+                    <Image
                       src={project.imageUrl}
                       alt={project.title}
-                      className="w-full h-full object-cover"
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 896px) 100vw, 896px"
+                      priority
                     />
                   )}
                 </div>
@@ -89,13 +138,13 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
                 {/* Content */}
                 <div className="px-6 py-8 space-y-8">
                   {/* Badge + title + tagline */}
-                  <div className="grid grid-cols-[auto_1fr] gap-x-6 gap-y-3">
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
                     <div className="pt-1">
                       <span className="inline-block border border-black/20 text-black/40 font-sans text-xs tracking-widest uppercase rounded-full px-3 py-1">
                         Project
                       </span>
                     </div>
-                    <div className="space-y-2">
+                    <div className="space-y-1">
                       <h2
                         className="text-black font-sans font-medium leading-tight tracking-tight"
                         style={{ fontSize: 'clamp(22px, 3.5vw, 44px)' }}
@@ -113,38 +162,104 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
                   <div className="border-t border-black/8" />
 
-                  {/* Focus + description */}
+                  {/* Role */}
                   <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
-                    <div>
-                      <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Focus</p>
-                      <p className="text-black/70 font-sans text-sm mt-1.5">{project.focus}</p>
-                    </div>
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Role</p>
+                    <p className="text-black/70 font-sans text-sm">{project.role}</p>
+                  </div>
+
+                  {/* Company */}
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Company</p>
+                    <p className="text-black/70 font-sans text-sm">{project.company}</p>
+                  </div>
+
+                  {/* Skills */}
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Skills</p>
+                    <p className="text-black/70 font-sans text-sm">{project.skills.join(', ')}</p>
+                  </div>
+
+                  {/* Year */}
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Year</p>
+                    <p className="text-black/70 font-sans text-sm">{project.year}</p>
+                  </div>
+
+                  {/* Description */}
+                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 pb-2">
+                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Overview</p>
                     <p className="text-black/55 font-sans text-sm leading-relaxed">
                       {project.description}
                     </p>
                   </div>
+                </div>
 
-                  {/* Services */}
-                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
-                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Services</p>
-                    <div className="flex flex-col gap-1">
-                      {project.services.map((s) => (
-                        <p key={s} className="text-black/70 font-sans text-sm">{s}</p>
-                      ))}
+                {/* Gallery */}
+                {project.gallery && project.gallery.length > 0 && (
+                  <div className="px-6 pb-8 flex flex-col gap-3">
+                    {(() => {
+                      const images = project.gallery!
+                      let idx = 0
+                      const layout = project.galleryLayout ?? (() => {
+                        const rows: ('full' | 'pair')[] = []
+                        let remaining = images.length
+                        while (remaining > 0) {
+                          rows.push('full'); remaining--
+                          if (remaining >= 2) { rows.push('pair'); remaining -= 2 }
+                          else if (remaining === 1) { rows.push('full'); remaining-- }
+                        }
+                        return rows
+                      })()
+
+                      return layout.map((type, rowIdx) => {
+                        if (type === 'full' && idx < images.length) {
+                          const src = images[idx++]
+                          return (
+                            <GalleryImage key={rowIdx} src={src} aspectRatio="16/9" sizes="(max-width: 896px) 100vw, 848px" />
+                          )
+                        }
+                        if (type === 'pair' && idx < images.length) {
+                          const leftSrc = images[idx++]
+                          const rightSrc = idx < images.length ? images[idx++] : undefined
+                          return (
+                            <div key={rowIdx} className="grid grid-cols-2 gap-3">
+                              <GalleryImage src={leftSrc} aspectRatio="1/1" sizes="(max-width: 896px) 50vw, 420px" />
+                              {rightSrc && (
+                                <GalleryImage src={rightSrc} aspectRatio="1/1" sizes="(max-width: 896px) 50vw, 420px" />
+                              )}
+                            </div>
+                          )
+                        }
+                        return null
+                      })
+                    })()}
+                  </div>
+                )}
+
+                {/* Outcome */}
+                {project.outcome && project.outcome.length > 0 && (
+                  <div className="px-6 pb-8">
+                    <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6">
+                      <p className="text-black/70 font-sans text-sm font-medium">Outcome</p>
+                      <div className="space-y-4">
+                        {project.outcome.map((text, i) => (
+                          <p key={i} className="text-black/45 font-sans text-sm leading-relaxed whitespace-pre-line">
+                            {text}
+                          </p>
+                        ))}
+                      </div>
                     </div>
                   </div>
-
-                  {/* Year */}
-                  <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 pb-2">
-                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Year</p>
-                    <p className="text-black/70 font-sans text-sm">{project.year}</p>
-                  </div>
-                </div>
+                )}
+                </>
+                )}
               </div>
             </motion.div>
           </div>
         </>
       )}
-    </AnimatePresence>
+    </AnimatePresence>,
+    document.body
   )
 }
