@@ -81,15 +81,15 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
             onClick={onClose}
           />
 
-          {/* Centered floating modal */}
-          <div className="fixed inset-0 z-40 flex items-center justify-center pointer-events-none" style={{ padding: '24px' }}>
+          {/* Centered floating modal (desktop) / bottom sheet (mobile) */}
+          <div className="fixed inset-0 z-40 flex items-end sm:items-center justify-center pointer-events-none sm:p-6">
             <motion.div
               key="modal"
-              className="w-full max-w-4xl flex flex-col rounded-3xl overflow-hidden pointer-events-auto"
-              style={{ maxHeight: 'calc(100vh - 48px)', backgroundColor: '#FDFCF8' }}
-              initial={{ y: 40, opacity: 0, scale: 0.97 }}
-              animate={{ y: 0, opacity: 1, scale: 1 }}
-              exit={{ y: 40, opacity: 0, scale: 0.97 }}
+              className="w-full max-w-4xl flex flex-col rounded-t-3xl sm:rounded-3xl overflow-hidden pointer-events-auto"
+              style={{ maxHeight: 'calc(100vh - 40px)', backgroundColor: '#FDFCF8' }}
+              initial={{ y: '100%', opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: '100%', opacity: 0 }}
               transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
             >
               {/* Top bar */}
