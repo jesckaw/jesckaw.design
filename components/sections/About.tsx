@@ -1,14 +1,70 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import { useState } from 'react'
 
 const experience = [
-  { company: 'Aura Finance', role: 'Product designer', year: '2024– 2026' },
-  { company: 'Aibao', role: 'Brand designer', year: '2025' },
-  { company: 'Hooli', role: 'Product designer', year: '2023' },
-  { company: 'Noteable', role: 'Product designer', year: '2022' },
+  { company: 'Aura Finance', role: 'Product designer', year: '2024 – Present' },
+  { company: 'Aibao', role: 'Brand designer', year: '2024 – Present' },
+  { company: 'Noteable', role: 'Product designer', year: '2023' },
+  { company: 'Hooli', role: 'Product designer', year: '2022' },
 ]
+
+const outsideCards = [
+  { label: 'Guangzhou, China', image: '/about1.png' },
+  { label: 'San Francisco, CA', image: '/about2.png' },
+  { label: 'Davis, CA', image: '/about3.png' },
+  { label: 'Guangzhou, China', image: '/about4.png' },
+  { label: 'Lake Tahoe', image: '/about5.png' },
+  { label: 'San Diego, CA', image: '/about6.png' },
+]
+
+function OutsideCarousel() {
+  const [paused, setPaused] = useState(false)
+  const doubled = [...outsideCards, ...outsideCards]
+
+  return (
+    <div
+      className="w-screen relative left-1/2 -translate-x-1/2 overflow-hidden"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+    >
+      <div
+        className="flex gap-4 py-1"
+        style={{
+          animation: 'outside-marquee 22s linear infinite',
+          animationPlayState: paused ? 'paused' : 'running',
+          width: 'max-content',
+        }}
+      >
+        {doubled.map((card, i) => (
+          <div
+            key={i}
+            className="shrink-0 rounded-2xl flex items-end p-5 relative overflow-hidden bg-black/5"
+            style={{ width: '340px', height: '340px' }}
+          >
+            <Image
+              src={card.image}
+              alt={card.label}
+              fill
+              className="object-cover"
+              sizes="340px"
+              loading={i < 6 ? 'eager' : 'lazy'}
+            />
+            <span className="relative font-sans font-semibold text-white text-base z-10" style={{ textShadow: '0 1px 4px rgba(0,0,0,0.5)' }}>{card.label}</span>
+          </div>
+        ))}
+      </div>
+      <style>{`
+        @keyframes outside-marquee {
+          0%   { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
+      `}</style>
+    </div>
+  )
+}
 
 function Sparkle({ size = 18, className = '' }: { size?: number; className?: string }) {
   return (
@@ -172,7 +228,7 @@ export default function About() {
   })
 
   return (
-    <div className="w-full h-full overflow-y-auto pb-32 pt-24 sm:pt-28 md:pt-36 page-x">
+    <div className="w-full h-full overflow-y-auto overflow-x-hidden pb-32 pt-32 sm:pt-28 md:pt-36 page-x">
       {/* Heading */}
       <motion.h2
         {...fadeUp(0.08)}
@@ -186,25 +242,17 @@ export default function About() {
       {/* Two cards */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-12">
         {/* Left card — bio + blob */}
-        <motion.div {...fadeUp(0.18)} className="bg-white rounded-3xl p-5 border border-black/[0.07] shadow-sm flex flex-col justify-between min-h-[220px]">
-          <p className="text-[14px] leading-[1.5] text-[#0A0A0A]/70 font-medium">
+        <motion.div {...fadeUp(0.18)} className="relative bg-white rounded-3xl p-6 border border-black/[0.07] shadow-sm min-h-[380px] overflow-hidden">
+          <p className="relative z-10 text-[18px] leading-[1.4] text-[#0A0A0A] font-semibold">
             A product designer in the<br />San Francisco Bay Area
           </p>
-          {/* Blob shape */}
-          <div className="flex justify-center items-center mt-4">
-            <div className="relative w-36 h-36">
-              {/* 4-lobed cloud using overlapping circles */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute left-0 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-[#A8CFDF]" />
-              <div className="absolute inset-6 rounded-full bg-[#A8CFDF]" />
-              {/* Sparkle star */}
-              <div className="absolute bottom-3 right-3 z-10">
-                <Sparkle size={36} className="text-[#B44EC4]" />
-              </div>
-            </div>
-          </div>
+          {/* Blue flower image — large, anchored to bottom-right corner */}
+          <img
+            src="/blue-flw.svg"
+            alt=""
+            className="absolute"
+            style={{ width: '75%', height: 'auto', bottom: '-18%', right: '-10%' }}
+          />
         </motion.div>
 
         {/* Right card — folder stack */}
@@ -217,7 +265,7 @@ export default function About() {
       <motion.div {...fadeUp(0.25)} className="mb-14">
         <h3 className="font-sans font-bold text-[#0A0A0A] mb-1" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>My experience</h3>
         <p className="font-serif italic text-[#0A0A0A]/55 mb-5" style={{ fontSize: 'clamp(16px, 1.5vw, 20px)' }}>
-          in Product, Graphic, and more
+          in Product, Brand, and more
         </p>
         <div className="divide-y divide-black/[0.08]">
           {experience.map(({ company, role, year }, i) => (
@@ -243,18 +291,10 @@ export default function About() {
         <h3 className="font-sans font-bold text-[#0A0A0A] mb-5" style={{ fontSize: 'clamp(22px, 2.5vw, 30px)' }}>
           Outside of <span className="font-serif italic font-normal">design</span>
         </h3>
-        <div className="grid grid-cols-3 gap-4">
-          {[0, 1, 2].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="aspect-square bg-[#D9D9D9]/60 rounded-2xl"
-            />
-          ))}
-        </div>
       </motion.div>
+
+      {/* Carousel — bleeds edge to edge */}
+      <OutsideCarousel />
     </div>
   )
 }
