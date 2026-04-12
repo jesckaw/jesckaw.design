@@ -188,15 +188,13 @@ export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps
 
                   {/* Focus */}
                   <div className="grid grid-cols-[100px_1fr] sm:grid-cols-[140px_1fr] gap-x-6 pb-2">
-                    <p className="text-black/35 font-sans text-xs uppercase tracking-widest">Focus</p>
                     <div>
-                      <p className="text-black/55 font-sans text-sm leading-relaxed mb-3">
-                        {project.description}
-                      </p>
-                      <span className="inline-block border border-black/15 text-black/50 font-sans text-xs tracking-wide rounded-full px-3 py-1">
-                        {project.category}
-                      </span>
+                      <p className="text-black/35 font-sans text-xs uppercase tracking-widest mb-2">Focus</p>
+                      <p className="text-black/70 font-sans text-sm font-medium">{project.category}</p>
                     </div>
+                    <p className="text-black/55 font-sans text-sm leading-relaxed">
+                      {project.description}
+                    </p>
                   </div>
                 </div>
 
