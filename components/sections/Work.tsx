@@ -154,7 +154,7 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
               animate={{ opacity: 1, y: 0 }}
               whileTap={{ scale: 0.98 }}
               transition={{ delay: 0.18 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="group rounded-2xl min-h-[140px] sm:min-h-0 text-left w-full cursor-pointer flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden"
+              className="group rounded-2xl min-h-[220px] sm:min-h-0 text-left w-full cursor-pointer flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden"
               style={{ backgroundColor: project.color }}
             >
               {project.imageUrl && (
