@@ -131,7 +131,7 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
 
   return (
     <>
-      <div className="relative w-full h-full flex flex-col overflow-y-auto overflow-x-hidden pt-32 sm:pt-28 md:pt-36 page-x pb-28 sm:pb-10">
+      <div className="relative w-full h-full flex flex-col overflow-y-auto overflow-x-hidden pt-32 sm:pt-28 md:pt-36 page-x pb-44 sm:pb-10">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
