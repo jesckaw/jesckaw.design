@@ -45,7 +45,7 @@ const projects: Project[] = [
     color: '#FFF8E7',
     tagline: 'Crafting a brand as warm as the food it serves',
     description: 'I built Aibao\'s full brand identity from the ground up, from the playful mascot and logo system to web design, print collateral, and merchandise. I shaped a warm, approachable presence across every touchpoint, from the storefront to the screen, creating a brand that feels as comforting as the food itself.',
-    role: 'Brand Designer',
+    role: 'Brand & UX Designer',
     company: 'Aibao',
     skills: ['Brand Identity', 'Logo Design', 'Web Design', 'Print Design', 'Merchandise'],
     year: '2024 – Present',
