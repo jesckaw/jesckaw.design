@@ -71,7 +71,7 @@ const projects: Project[] = [
     title: 'Noteable',
     category: 'Productivity',
     color: '#FFF7ED',
-    tagline: 'Turning raw data into stories worth exploring',
+    tagline: 'Notebook insights, right where teams already work.',
     comingSoon: true,
     imageUrl: '/noteable3.png',
     description: 'Noteable is a note-taking and knowledge management app for people who think in connections, not folders. We led design from concept to launch — building a system flexible enough for writers, researchers, and makers while staying fast and frictionless for daily capture.',
