@@ -9,7 +9,7 @@ const links = [
 
 export default function Contact() {
   return (
-    <div className="w-full h-full overflow-y-auto pt-24 sm:pt-28 md:pt-36 page-x flex flex-col">
+    <div className="w-full min-h-screen pt-24 sm:pt-28 md:pt-36 page-x flex flex-col">
       <div className="flex flex-col items-center text-center pb-28 my-auto">
       {/* Heading */}
       <motion.h2

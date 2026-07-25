@@ -1,13 +1,20 @@
 'use client'
 
-import { useState } from 'react'
-import type { Section } from '@/app/page'
+import { useEffect, useState } from 'react'
 
-const iconItems: { id: Section; icon: string; label: string }[] = [
-  { id: 'about',   icon: '🌸', label: 'About' },
+type SectionId = 'home' | 'work' | 'about' | 'contact'
+
+const sectionIds: SectionId[] = ['home', 'work', 'about', 'contact']
+
+const iconItems: { id: SectionId; icon: string; label: string }[] = [
   { id: 'work',    icon: '📁', label: 'Work' },
+  { id: 'about',   icon: '🌸', label: 'About' },
   { id: 'contact', icon: '✉️', label: 'Contact' },
 ]
+
+function scrollToSection(id: SectionId) {
+  document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+}
 
 function ChatButton() {
   const [show, setShow] = useState(false)
@@ -34,18 +41,35 @@ function ChatButton() {
   )
 }
 
-export default function TopNav({
-  active,
-  onNavigate,
-}: {
-  active: Section
-  onNavigate: (s: Section) => void
-}) {
+export default function TopNav() {
+  const [active, setActive] = useState<SectionId>('home')
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            setActive(entry.target.id as SectionId)
+          }
+        }
+      },
+      { rootMargin: '-45% 0px -45% 0px', threshold: 0 }
+    )
+
+    const elements = sectionIds
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null)
+
+    elements.forEach((el) => observer.observe(el))
+
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="fixed top-4 left-1/2 -translate-x-1/2 z-50 flex items-center gap-3 sm:gap-2.5 bg-white border border-black/[0.08] rounded-full pl-6 pr-8 sm:px-6 py-2.5 sm:py-3 shadow-sm">
       {/* Name */}
       <button
-        onClick={() => onNavigate('home')}
+        onClick={() => scrollToSection('home')}
         className="font-serif italic text-[#0A0A0A] text-[24px] sm:text-[28px] mr-0 sm:mr-3 shrink-0 group/name overflow-hidden"
       >
         <span className="grid">
@@ -62,7 +86,7 @@ export default function TopNav({
             {item.label}
           </span>
           <button
-            onClick={() => onNavigate(item.id)}
+            onClick={() => scrollToSection(item.id)}
             aria-label={item.label}
             className={`w-12 h-12 sm:w-12 sm:h-12 rounded-[12px] flex items-center justify-center text-xl sm:text-2xl transition-colors duration-150 ${
               active === item.id ? 'bg-[#E8E8E8]' : 'bg-[#F3F3F1] hover:bg-[#EBEBEA]'

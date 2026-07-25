@@ -228,7 +228,7 @@ export default function About() {
   })
 
   return (
-    <div className="w-full h-full overflow-y-auto overflow-x-hidden pb-32 pt-32 sm:pt-28 md:pt-36 page-x">
+    <div className="w-full min-h-screen pb-32 pt-32 sm:pt-28 md:pt-36 page-x">
       {/* Heading */}
       <motion.h2
         {...fadeUp(0.08)}

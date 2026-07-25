@@ -131,7 +131,7 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
 
   return (
     <>
-      <div className="relative w-full h-full flex flex-col overflow-y-auto overflow-x-hidden pt-32 sm:pt-28 md:pt-36 page-x pb-44 sm:pb-10">
+      <div className="relative w-full min-h-screen flex flex-col pt-32 sm:pt-28 md:pt-36 page-x pb-24 sm:pb-28">
         {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
@@ -145,7 +145,7 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
         </motion.h2>
 
         {/* Grid — 1 col on mobile, 2 cols on sm+ */}
-        <div className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 min-h-0">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
           {projects.map((project, i) => (
             <motion.button
               key={project.id}
@@ -154,7 +154,7 @@ export default function Work({ onModalChange }: { onModalChange?: (open: boolean
               animate={{ opacity: 1, y: 0 }}
               whileTap={{ scale: 0.98 }}
               transition={{ delay: 0.18 + i * 0.07, duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-              className="group rounded-2xl min-h-[220px] sm:min-h-0 text-left w-full cursor-pointer flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden"
+              className="group rounded-2xl min-h-[220px] sm:min-h-[320px] text-left w-full cursor-pointer flex flex-col justify-between p-5 sm:p-6 relative overflow-hidden"
               style={{ backgroundColor: project.color }}
             >
               {project.imageUrl && (

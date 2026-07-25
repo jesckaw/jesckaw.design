@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <div className="relative w-full h-full overflow-hidden">
+    <div className="relative w-full min-h-screen overflow-hidden">
       {/* Blue flower — bottom left */}
       <div
         className="absolute z-0 pointer-events-none select-none w-[280px] h-[280px] sm:w-[500px] sm:h-[500px]"
@@ -23,7 +23,7 @@ export default function Home() {
       </div>
 
       {/* Center content */}
-      <div className="relative z-10 flex flex-col items-center justify-center w-full h-full pb-6 px-6">
+      <div className="relative z-10 flex flex-col items-center justify-center w-full min-h-screen pb-6 px-6">
         {/* Headline */}
         <motion.h1
           initial={{ opacity: 0, y: 22 }}

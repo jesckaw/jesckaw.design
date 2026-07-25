@@ -60,11 +60,19 @@ function GalleryImage({ src, aspectRatio, sizes }: { src: string; aspectRatio: s
 }
 
 export default function CaseStudyModal({ project, onClose }: CaseStudyModalProps) {
+  const [mounted, setMounted] = useState(false)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
     window.addEventListener('keydown', onKey)
     return () => window.removeEventListener('keydown', onKey)
   }, [onClose])
+
+  if (!mounted) return null
 
   return createPortal(
     <AnimatePresence>
