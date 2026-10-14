@@ -11,7 +11,7 @@ const projects: Project[] = [
     title: 'Aura Finance',
     category: 'Fintech, B2B, SaaS',
     color: '#F0EEFF',
-    tagline: 'Making personal finance feel less like a chore',
+    tagline: 'Financial wellness that meets people where they are',
     description: 'I led the design of Aura\'s product experience from 0 to 1, spanning the mobile app, web app, and marketing site. As the team expanded to desktop, I defined how the experience would scale beyond mobile, strengthened the design system, and shaped the end-to-end journey from concept to delivery.',
     role: 'Lead Product Designer',
     company: 'Aura Finance',
